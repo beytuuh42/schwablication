@@ -1,0 +1,6 @@
+framework module Pods_schwablicationUITests {
+  umbrella header "Pods-schwablicationUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

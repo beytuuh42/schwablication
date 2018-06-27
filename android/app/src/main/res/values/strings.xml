@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ss18-schwablication</string>
+    <string name="action_settings">Settings</string>
+    <string name="bottom_nav_1">Notes</string>
+    <string name="bottom_nav_2">Home</string>
+    <string name="bottom_nav_3">List</string>
+    <string name="placeholder_edittext">Click to edit..</string>
+    <string name="extended_info_textview_date">Date</string>
+    <string name="extended_info_textview_title">Title</string>
+    <string name="extended_info_textview_amount">Amount</string>
+    <string name="extended_info_textview_desc">Description</string>
+    <string name="extended_info_textview_pic">Picture</string>
+    <string name="btn_save">Save!</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
