@@ -1,9 +1,9 @@
 //
-//
+//  HomeViewController.swift
 //  schwablication
 //
-//  Created by Ehsan Rajol on 15.06.18.
-//  Copyright © 2018 Brian Advent. All rights reserved.
+//  Created by Ehsan Rajol && Beytullah Ince on 15.06.18.
+//  Copyright © 2018 Hochschule der Medien. All rights reserved.
 //
 
 import UIKit
@@ -21,11 +21,14 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     var entryManager:EntryManager?
     
     var bilanz:Double = 0
+    
+    /// Displayed chart values
     var inDataEntry = PieChartDataEntry(value: 0.0)
     var outDataEntry = PieChartDataEntry(value: 0.0)
-    
     var inOutDataEntries = [PieChartDataEntry]()
     
+    /// Loading the handler for the keyboard, getting references
+    /// and loading data.
     override func viewDidLoad() {
         keyboardHandler()
         super.viewDidLoad()
@@ -39,63 +42,72 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         loadData()
     }
     
+    
+    /// Loading data from firebase then setting up data for the pie chart
+    func loadData(){
+        entryManager?.fetchInOutAmount(category: Category.Ausgaben.description, completion: { entry in
+            if entry != nil {
+                self.setPieChartData()
+            } else {
+                print("ListViewController/refreshTable: Couldn't fetch data")
+            }
+        })
+    }
+    
+    /// Setting up pie chart data
+    func setPieChartData() {
+        setIncPieChartData()
+        setOutPieChartData()
+        self.pieChart.chartDescription?.text = ""
+        self.pieChart.legend.enabled = false
+        self.inOutDataEntries = [self.inDataEntry, self.outDataEntry]
+        self.updateChartData()
+    }
+    
+    /// Setting up pie chart data for incomings
+    func setIncPieChartData(){
+        self.inDataEntry.label = Category.Einkommen.description
+        self.inDataEntry.value = (self.entryManager?.getTotalIncAmount())!
+    }
+    
+    /// Setting up pie chart data for outgoing
+    func setOutPieChartData() {
+        self.outDataEntry.value = (self.entryManager?.getTotalOutAmount())!
+        self.outDataEntry.label = Category.Ausgaben.description
+    }
+    
     // for setup and update your Piechart
     func updateChartData() {
         loadBilanz()
-
+        
         let chartDataSet = PieChartDataSet(values: inOutDataEntries, label: nil)
-        
         let chartData = PieChartData(dataSet: chartDataSet)
-        
         let colors = [UIColor(named:"inColor"), UIColor(named:"outColor")]
+        
         chartDataSet.colors = colors as! [NSUIColor]
         pieChart.data = chartData
         pieChart.animate(xAxisDuration: 2, yAxisDuration: 2)
     }
     
-    func loadData(){
-        entryManager?.fetchInOutAmount(category: Category.Ausgaben.description, completion: { entry in
-            if entry != nil {
-                self.inDataEntry.label = "Einkommen"
-                self.inDataEntry.value = (self.entryManager?.getTotalIncAmount())!
-                self.pieChart.chartDescription?.text=""
-                self.pieChart.legend.enabled = false
-                
-                self.inOutDataEntries = [self.inDataEntry, self.outDataEntry]
-                self.updateChartData()
-
-            } else {
-                print("ListViewController/refreshTable: Couldn't fetch data")
-            }
-        })
-        entryManager?.fetchInOutAmount(category: Category.Ausgaben.description, completion: { entry in
-            if entry != nil {
-                self.outDataEntry.value = (self.entryManager?.getTotalOutAmount())!
-                self.outDataEntry.label = "Ausgaben"
-                self.pieChart.chartDescription?.text=""
-                self.pieChart.legend.enabled = false
-                
-                self.inOutDataEntries = [self.inDataEntry, self.outDataEntry]
-                print(self.entryManager?.getTotalOutAmount())
-                self.updateChartData()
-            } else {
-                print("ListViewController/refreshTable: Couldn't fetch data")
-            }
-        })
-        
-
-    }
-    
-    
+    /// Calculating the bilanz also showing it formatted on the pie chart
     func loadBilanz(){
         bilanz = (entryManager?.getTotalIncAmount())! - (entryManager?.getTotalOutAmount())!
         pieChart.centerText = String(format: "%.02f €", bilanz)
     }
     
+    
+    /// Clearing textfield input
+    ///
+    /// - Parameter textField: input to clear
     private func textFieldDidBeginEditing(textField: UITextField) {
         textField.text = ""
     }
-
+    
+    
+    /// Checking if inputs are empty, after that saving it in firebase.
+    /// Also refreshing pie chart and clearing textfields.
+    ///
+    /// - Parameter category: input to clear
     func addDataToFirebase(category:String){
         if (isEmptyInput()){
             Alert.showBasic(title: "Incomplete Form", message: "Amount and Title field is required." , vc: self)
@@ -104,12 +116,15 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
             entryManager!.addEntry(title: titleTextField.text!, amount: Double(amountTextField.text!)!,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             category: category)
             
             loadData()
-            
             textFieldDidBeginEditing(textField: amountTextField)
             textFieldDidBeginEditing(textField: titleTextField)
         }
     }
     
+    
+    /// Checking if input textfields are empty
+    ///
+    /// - Returns: whether it's empty or not
     func isEmptyInput() -> Bool{
         if((amountTextField.text?.isEmpty)! || (titleTextField.text?.isEmpty)!){
             return true
@@ -122,7 +137,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

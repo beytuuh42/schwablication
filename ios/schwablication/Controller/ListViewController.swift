@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ListViewController.swift
 //  schwablication
 //
 //  Created by bi on 18.06.18.
@@ -21,11 +21,12 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     /// Loading data into the view
     override func viewDidLoad() {
         super.viewDidLoad()
-
         refEntries = Database.database().reference().child("entries")
         entryManager = EntryManager(refEntries: self.refEntries)
-        
-//        entryManager!.addEntry(title: "H&M Einkauf", amount: 100,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             category: Category.Ausgaben.description)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         refreshTable()
     }
     
@@ -40,7 +41,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             self.tblEntries.reloadData()
         })
-            self.tblEntries.reloadData()
     }
     
     func showEntry(id:String){

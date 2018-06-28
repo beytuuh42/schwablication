@@ -51,6 +51,7 @@ class EntryManager{
     /// - Parameter completion: closure handler
     /// - return: returns an array wi
     func fetchAllData(completion: @escaping ([EntryModel]?)->()){
+        self.entriesList.removeAll()
         self.refEntries.keepSynced(true)
         self.refEntries.observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -116,6 +117,7 @@ class EntryManager{
     /// - Parameter completion: closure handler
     /// - return: returns an array wi
     func fetchTotalAmount(completion: @escaping (Double?)->()){
+        self.totalSum = 0
         self.refEntries.keepSynced(true)
         self.refEntries.observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -144,7 +146,9 @@ class EntryManager{
     ///   - category: String of the category
     ///   - completion: completion handler
     /// - return: sum value
-    func fetchInOutAmount(category:String,completion: @escaping (Double?)->()){
+    func fetchInOutAmount(category:String, completion: @escaping (Double?)->()){
+        self.outSum = 0
+        self.incSum = 0
         self.refEntries.keepSynced(true)
         self.refEntries.observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -194,7 +198,6 @@ class EntryManager{
     ///
     /// - Returns: Entrymodel array
     func getTotalIncAmount() -> Double {
-
         return self.incSum
     }
     
