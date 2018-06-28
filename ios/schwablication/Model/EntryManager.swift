@@ -12,6 +12,9 @@ class EntryManager{
     
     var refEntries:DatabaseReference
     var entriesList = [EntryModel]()
+    var totalSum:Double = 0.0
+    var incSum:Double = 0.0
+    var outSum:Double = 0.0
     
     
     /// Getting database reference
@@ -107,11 +110,98 @@ class EntryManager{
         completion(nil)
     }
     
+    /// Fetching all entries from the datebase and saving into
+    /// an EntryModel array.
+    /// Using a closure to return the value after using the database.
+    /// - Parameter completion: closure handler
+    /// - return: returns an array wi
+    func fetchTotalAmount(completion: @escaping (Double?)->()){
+        self.refEntries.keepSynced(true)
+        self.refEntries.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            // check if there are entries
+            if snapshot.childrenCount < 0 {
+                completion(nil)
+            }
+            
+            // iterating through all entries, saving them as a EntryModel object
+            // and pushing it into the EntryModel array
+            let enumerator = snapshot.children
+            while let entries = enumerator.nextObject() as? DataSnapshot{
+                let entryDic = entries.value as? NSDictionary
+                let amount = entryDic![EntryModel.DbColumns.columnAmount] as! Double
+                
+                self.totalSum += amount
+            }
+            completion(self.totalSum)
+        })
+    }
+    
+    /// Fetching all entries for the amount from the datebase and
+    /// and saving into variables depending on the category String.
+    /// Using a closure to return the value after using the database.
+    /// - Parameters:
+    ///   - category: String of the category
+    ///   - completion: completion handler
+    /// - return: sum value
+    func fetchInOutAmount(category:String,completion: @escaping (Double?)->()){
+        self.refEntries.keepSynced(true)
+        self.refEntries.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            // check if there are entries
+            if snapshot.childrenCount < 0 {
+                completion(nil)
+            }
+            
+            // iterating through all entries, saving them as a EntryModel object
+            // and pushing it into the EntryModel array
+            let enumerator = snapshot.children
+            while let entries = enumerator.nextObject() as? DataSnapshot{
+                let entryDic = entries.value as? NSDictionary
+                let amount = entryDic![EntryModel.DbColumns.columnAmount] as! Double
+                let category = entryDic![EntryModel.DbColumns.columnCategory] as! String
+                
+                if(category == Category.Ausgaben.description){
+                    self.outSum += amount
+                } else {
+                    self.incSum += amount
+                }
+            }
+            if(category == Category.Einkommen.description){
+                completion(self.incSum)
+            } else {
+                completion(self.outSum)
+            }
+        })
+    }
+    
     
     /// Returns an array consisting of entries.
     ///
     /// - Returns: Entrymodel array
     func getEntriesList() -> [EntryModel]{
         return self.entriesList
+    }
+    
+    /// Returns a double consisting of the total summed amount.
+    ///
+    /// - Returns: Entrymodel array
+    func getTotalAmount() -> Double {
+        return self.totalSum
+    }
+    
+    /// Returns a double consisting of the incoming summed amount.
+    ///
+    /// - Returns: Entrymodel array
+    func getTotalIncAmount() -> Double {
+
+        return self.incSum
+    }
+    
+    /// Returns a double consisting of the outgoing summed amount.
+    ///
+    /// - Returns: Entrymodel array
+    func getTotalOutAmount() -> Double {
+        return self.outSum
     }
 }

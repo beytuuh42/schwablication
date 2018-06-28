@@ -25,7 +25,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         refEntries = Database.database().reference().child("entries")
         entryManager = EntryManager(refEntries: self.refEntries)
         
-        //entryManager!.addEntry(title: "H&M Einkauf", amount: 100,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             category: Category.Einkommen.description)
+//        entryManager!.addEntry(title: "H&M Einkauf", amount: 100,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             category: Category.Ausgaben.description)
         refreshTable()
     }
     
@@ -35,6 +35,26 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         entryManager?.fetchAllData(completion: { entry in
             if entry != nil {
                 print("Refreshing table")
+            } else {
+                print("ListViewController/refreshTable: Couldn't fetch data")
+            }
+            self.tblEntries.reloadData()
+        })
+        
+        entryManager?.fetchTotalAmount(completion: { entry in
+            if entry != nil {
+                print("fetchToalAmount")
+                print(self.entryManager?.getTotalAmount())
+            } else {
+                print("ListViewController/refreshTable: Couldn't fetch data")
+            }
+            self.tblEntries.reloadData()
+        })
+        entryManager?.fetchInOutAmount(category: Category.Ausgaben.description, completion: { entry in
+            if entry != nil {
+                print("Ausgaben")
+                print(self.entryManager?.getTotalIncAmount())
+                print(self.entryManager?.getTotalOutAmount())
             } else {
                 print("ListViewController/refreshTable: Couldn't fetch data")
             }
