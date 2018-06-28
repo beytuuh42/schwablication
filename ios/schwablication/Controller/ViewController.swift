@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import Firebase
 
 class ViewController: UIViewController, UITextFieldDelegate {
     
@@ -16,6 +17,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var bilanzLabel: UILabel!
+    var refEntries: DatabaseReference!
+    var entryManager:EntryManager?
+    
+    
     
     
     // Bilanz betrag muss hier von db aufgerufen werden
@@ -24,12 +29,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // button to add amount and title to list and chart
     @IBAction func addButton(_ sender: AnyObject) {
-    
-        if amountTextField.text?.isEmpty ?? true {
-            Alert.showBasic(title: "Incomplete Form", message: "Amount field is required." , vc: self)
+        
+        if (amountTextField.text?.isEmpty)! || (titleTextField.text?.isEmpty)! {
+            Alert.showBasic(title: "Incomplete Form", message: "Amount and Title field is required." , vc: self)
         } else {
-            inDataEntry.value = Double(amountTextField.text!)!
+            entryManager!.addEntry(title: titleTextField.text!, amount: Double(amountTextField.text!)!,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             category: Category.Einkommen.description)
+            
         }
+        
         pieChart.centerText = String(bilanz)
         updateChartData()
         
@@ -44,13 +51,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     // button to add amount and title to list and chart, but for outputs amounts
-
+    
     @IBAction func minusButton(_ sender: AnyObject) {
-        if (amountTextField.text?.isEmpty)! && titleTextField.text?.isEmpty ?? true {
+        if (amountTextField.text?.isEmpty)! || (titleTextField.text?.isEmpty)! {
             Alert.showBasic(title: "Incomplete Form", message: "Amount and Title field is required." , vc: self)
             
         } else {
-            outDataEntry.value = Double(amountTextField.text!)!
+            entryManager!.addEntry(title: titleTextField.text!, amount: Double(amountTextField.text!)!,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             category: Category.Ausgaben.description)
+            
         }
         
         pieChart.centerText = String(bilanz)
@@ -63,7 +71,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     
-   
+    
     
     var inDataEntry = PieChartDataEntry(value: 0)
     var outDataEntry = PieChartDataEntry(value: 0)
@@ -105,17 +113,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         super.viewDidLoad()
         
+        
+        refEntries = Database.database().reference().child("entries")
+        entryManager = EntryManager(refEntries: self.refEntries)
+        loadAmount()
+        loadBilanz()
+        
+        
         self.amountTextField.delegate = self
+        self.titleTextField.delegate = self
+        
         
         pieChart.chartDescription?.text=""
         pieChart.legend.enabled = false
-        
-        inDataEntry.value = 0
-        inDataEntry.label = "Einkommen"
-        
-        
-        outDataEntry.value = 0
-        outDataEntry.label = "Ausgaben"
         
         inOutDataEntries = [inDataEntry, outDataEntry]
         
@@ -128,6 +138,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // for setup and update your Piechart
     func updateChartData() {
+        
         let chartDataSet = PieChartDataSet(values: inOutDataEntries, label: nil)
         
         let chartData = PieChartData(dataSet: chartDataSet)
@@ -138,6 +149,34 @@ class ViewController: UIViewController, UITextFieldDelegate {
         pieChart.animate(xAxisDuration: 2, yAxisDuration: 2)
         
         
+    }
+    
+    
+    
+    func loadAmount(){
+        entryManager?.fetchTotalAmount(completion: { entry in
+            if entry != nil {
+                self.inDataEntry.label = "Einkommen"
+                self.inDataEntry.value = (self.entryManager?.getTotalIncAmount())!
+            } else {
+                print("ListViewController/refreshTable: Couldn't fetch data")
+            }
+        })
+        entryManager?.fetchInOutAmount(category: Category.Ausgaben.description, completion: { entry in
+            if entry != nil {
+                self.outDataEntry.value = (self.entryManager?.getTotalOutAmount())!
+                self.outDataEntry.label = "Ausgaben"
+            } else {
+                print("ListViewController/refreshTable: Couldn't fetch data")
+            }
+        })
+    }
+    
+    
+    func loadBilanz(){
+        
+        bilanz = (entryManager?.getTotalIncAmount())! - (entryManager?.getTotalOutAmount())!
+        updateChartData()
     }
     
     
