@@ -40,26 +40,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             self.tblEntries.reloadData()
         })
-        
-        entryManager?.fetchTotalAmount(completion: { entry in
-            if entry != nil {
-                print("fetchToalAmount")
-                print(self.entryManager?.getTotalAmount())
-            } else {
-                print("ListViewController/refreshTable: Couldn't fetch data")
-            }
             self.tblEntries.reloadData()
-        })
-        entryManager?.fetchInOutAmount(category: Category.Ausgaben.description, completion: { entry in
-            if entry != nil {
-                print("Ausgaben")
-                print(self.entryManager?.getTotalIncAmount())
-                print(self.entryManager?.getTotalOutAmount())
-            } else {
-                print("ListViewController/refreshTable: Couldn't fetch data")
-            }
-            self.tblEntries.reloadData()
-        })
     }
     
     func showEntry(id:String){
