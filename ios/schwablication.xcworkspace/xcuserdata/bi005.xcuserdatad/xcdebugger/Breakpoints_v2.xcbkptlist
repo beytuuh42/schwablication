@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "schwablication/Model/EntryManager.swift"
-            timestampString = "551810297.594347"
+            timestampString = "551891838.140098"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "addEntry(title:amount:category:)"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "init(refEntries:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "schwablication/Model/EntryManager.swift"
-            timestampString = "551810581.745981"
+            timestampString = "551891838.140439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "EntryManager"
             landmarkType = "3">
          </BreakpointContent>
