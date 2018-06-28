@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		04BAA823316FA6687BF6AD1B /* Pods_schwablication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 381426240D9364A5E65427AF /* Pods_schwablication.framework */; };
+		3AF02E6020E5109A00A206A5 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF02E5F20E5109A00A206A5 /* Alert.swift */; };
+		3AF02E6220E510CC00A206A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF02E6120E510CC00A206A5 /* ViewController.swift */; };
 		4F8EA48F337C7F08889AE69A /* Pods_schwablicationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C5654F70AF329F7C649452 /* Pods_schwablicationTests.framework */; };
 		5A8C7E518CC00FF8D79DA8A8 /* Pods_schwablicationUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2A774C4E5FD5A8C7D667061 /* Pods_schwablicationUITests.framework */; };
 		C41E70E420D833200033CC18 /* EntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41E70E320D833200033CC18 /* EntryModel.swift */; };
@@ -44,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		381426240D9364A5E65427AF /* Pods_schwablication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_schwablication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AF02E5F20E5109A00A206A5 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		3AF02E6120E510CC00A206A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5B4E2ED79ADD392E28586DE7 /* Pods-schwablication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-schwablication.release.xcconfig"; path = "Pods/Target Support Files/Pods-schwablication/Pods-schwablication.release.xcconfig"; sourceTree = "<group>"; };
 		687682AF0EC02EE498DFB8CB /* Pods-schwablicationUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-schwablicationUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-schwablicationUITests/Pods-schwablicationUITests.release.xcconfig"; sourceTree = "<group>"; };
 		75E38239E44F2612E9025CDF /* Pods-schwablication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-schwablication.debug.xcconfig"; path = "Pods/Target Support Files/Pods-schwablication/Pods-schwablication.debug.xcconfig"; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				C4AD42D420D8310B003652AE /* ListViewController.swift */,
+				3AF02E6120E510CC00A206A5 /* ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -211,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				C4FB3CDD20DE853B008E4E21 /* DateFormatter.swift */,
+				3AF02E5F20E5109A00A206A5 /* Alert.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -372,12 +378,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-schwablication/Pods-schwablication-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -433,9 +441,11 @@
 				C4FB3CDE20DE853B008E4E21 /* DateFormatter.swift in Sources */,
 				C44B610B20D83C2D004EBFA8 /* ListViewControllerTableViewCell.swift in Sources */,
 				C4AD42D520D8310B003652AE /* ListViewController.swift in Sources */,
+				3AF02E6220E510CC00A206A5 /* ViewController.swift in Sources */,
 				C4FB3CDC20DD38A5008E4E21 /* EntryManager.swift in Sources */,
 				C4AD42D320D8310B003652AE /* AppDelegate.swift in Sources */,
 				C41E70E420D833200033CC18 /* EntryModel.swift in Sources */,
+				3AF02E6020E5109A00A206A5 /* Alert.swift in Sources */,
 				C44B610D20D84AD5004EBFA8 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
