@@ -21,6 +21,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     /// Loading data into the view
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.accessibilityIdentifier = "listView"
         refEntries = Database.database().reference().child("entries")
         entryManager = EntryManager(refEntries: self.refEntries)
     }
