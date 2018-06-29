@@ -56,6 +56,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBAction func onButtonClickCreateAccount(_ sender: UIButton) {
         //handleRegister()
         handleSelectImageView(sender:sender)
+        
     }
     
     
