@@ -32,6 +32,12 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         refreshTable()
     }
     
+    /// Refreshing table content before view is appearing
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        //Auth.auth().removeStateDidChangeListener(handle!)
+    }
+    
     
     /// After completion of fetching, reloading the table for the view
     func refreshTable(){

@@ -14,6 +14,7 @@
 		C41E70E420D833200033CC18 /* EntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41E70E320D833200033CC18 /* EntryModel.swift */; };
 		C4279E4E20E57F1D006FD30C /* ListViewUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4279E4D20E57F1D006FD30C /* ListViewUITest.swift */; };
 		C4279E5020E57F3C006FD30C /* ListViewUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4279E4F20E57F3C006FD30C /* ListViewUnitTest.swift */; };
+		C431AC2520E6DC69002C6E56 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C431AC2420E6DC69002C6E56 /* ImageHelper.swift */; };
 		C44B610920D834A6004EBFA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C44B610820D834A6004EBFA8 /* GoogleService-Info.plist */; };
 		C44B610B20D83C2D004EBFA8 /* ListViewControllerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44B610A20D83C2C004EBFA8 /* ListViewControllerTableViewCell.swift */; };
 		C44B610D20D84AD5004EBFA8 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44B610C20D84AD5004EBFA8 /* Category.swift */; };
@@ -22,6 +23,8 @@
 		C4AD42D820D8310B003652AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4AD42D620D8310B003652AE /* Main.storyboard */; };
 		C4AD42DA20D8310B003652AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4AD42D920D8310B003652AE /* Assets.xcassets */; };
 		C4AD42DD20D8310B003652AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4AD42DB20D8310B003652AE /* LaunchScreen.storyboard */; };
+		C4E6A75B20E637940009BDFD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E6A75A20E637940009BDFD /* LoginViewController.swift */; };
+		C4E6A75D20E639D30009BDFD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E6A75C20E639D30009BDFD /* RegisterViewController.swift */; };
 		C4FB3CDC20DD38A5008E4E21 /* EntryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FB3CDB20DD38A5008E4E21 /* EntryManager.swift */; };
 		C4FB3CDE20DE853B008E4E21 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FB3CDD20DE853B008E4E21 /* DateFormatter.swift */; };
 		FEA8FFF4E505CB2596CC901E /* Pods_schwablication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E568A8E9037BEDC569E14835 /* Pods_schwablication.framework */; };
@@ -62,6 +65,7 @@
 		C4279E4520E57E7D006FD30C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4279E4D20E57F1D006FD30C /* ListViewUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewUITest.swift; sourceTree = "<group>"; };
 		C4279E4F20E57F3C006FD30C /* ListViewUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewUnitTest.swift; sourceTree = "<group>"; };
+		C431AC2420E6DC69002C6E56 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		C44B610820D834A6004EBFA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C44B610A20D83C2C004EBFA8 /* ListViewControllerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewControllerTableViewCell.swift; sourceTree = "<group>"; };
 		C44B610C20D84AD5004EBFA8 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 		C4AD42D920D8310B003652AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4AD42DC20D8310B003652AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4AD42DE20D8310B003652AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4E6A75A20E637940009BDFD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C4E6A75C20E639D30009BDFD /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		C4FB3CDB20DD38A5008E4E21 /* EntryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryManager.swift; sourceTree = "<group>"; };
 		C4FB3CDD20DE853B008E4E21 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		E568A8E9037BEDC569E14835 /* Pods_schwablication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_schwablication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,6 +206,8 @@
 			children = (
 				C4AD42D420D8310B003652AE /* ListViewController.swift */,
 				3AF02E6120E510CC00A206A5 /* HomeViewController.swift */,
+				C4E6A75A20E637940009BDFD /* LoginViewController.swift */,
+				C4E6A75C20E639D30009BDFD /* RegisterViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -217,6 +225,7 @@
 			children = (
 				C4FB3CDD20DE853B008E4E21 /* DateFormatter.swift */,
 				3AF02E5F20E5109A00A206A5 /* Alert.swift */,
+				C431AC2420E6DC69002C6E56 /* ImageHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -379,6 +388,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-schwablication/Pods-schwablication-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -386,6 +396,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -455,6 +466,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4FB3CDE20DE853B008E4E21 /* DateFormatter.swift in Sources */,
+				C4E6A75D20E639D30009BDFD /* RegisterViewController.swift in Sources */,
 				C44B610B20D83C2D004EBFA8 /* ListViewControllerTableViewCell.swift in Sources */,
 				C4AD42D520D8310B003652AE /* ListViewController.swift in Sources */,
 				3AF02E6220E510CC00A206A5 /* HomeViewController.swift in Sources */,
@@ -462,7 +474,9 @@
 				C4AD42D320D8310B003652AE /* AppDelegate.swift in Sources */,
 				C41E70E420D833200033CC18 /* EntryModel.swift in Sources */,
 				3AF02E6020E5109A00A206A5 /* Alert.swift in Sources */,
+				C4E6A75B20E637940009BDFD /* LoginViewController.swift in Sources */,
 				C44B610D20D84AD5004EBFA8 /* Category.swift in Sources */,
+				C431AC2520E6DC69002C6E56 /* ImageHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,7 +523,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 63DAK33447;
 				INFOPLIST_FILE = schwablicationTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablicationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -526,7 +544,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 63DAK33447;
 				INFOPLIST_FILE = schwablicationTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablicationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -542,7 +564,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 63DAK33447;
 				INFOPLIST_FILE = schwablicationUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablicationUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -558,7 +584,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 63DAK33447;
 				INFOPLIST_FILE = schwablicationUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablicationUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -689,7 +719,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 63DAK33447;
 				INFOPLIST_FILE = schwablication/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -705,7 +738,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 63DAK33447;
 				INFOPLIST_FILE = schwablication/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

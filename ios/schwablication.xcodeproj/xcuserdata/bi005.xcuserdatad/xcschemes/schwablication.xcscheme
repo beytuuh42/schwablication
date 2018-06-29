@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C4AD42ED20D8310C003652AE"
+               BlueprintIdentifier = "C4279E4020E57E7D006FD30C"
                BuildableName = "schwablicationUITests.xctest"
                BlueprintName = "schwablicationUITests"
                ReferencedContainer = "container:schwablication.xcodeproj">
@@ -81,6 +81,13 @@
             ReferencedContainer = "container:schwablication.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "OS_ACTIVITY_MODE"
+            value = "disable"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

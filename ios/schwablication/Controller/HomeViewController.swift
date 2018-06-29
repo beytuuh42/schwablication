@@ -114,7 +114,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     /// - Parameter category: input to clear
     func addDataToFirebase(category:String){
         if (isEmptyInput()){
-            Alert.showBasic(title: "Incomplete Form", message: "Amount and Title field is required." , vc: self)
+            Alert().showBasic(title: "Incomplete Form", message: "Amount and Title field is required." , vc: self)
             
         } else {
             entryManager!.addEntry(title: titleTextField.text!, amount: Double(amountTextField.text!)!,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             category: category)

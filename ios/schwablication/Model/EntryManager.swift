@@ -190,6 +190,19 @@ class EntryManager{
         })
     }
     
+    func updateEntryById(id:String, entry:EntryModel){
+        let entryRef = refEntries.child("id/\(id)")
+        let entryVal = [
+            EntryModel.DbColumns.columnId:entry.id,
+            EntryModel.DbColumns.columnAmount:entry.amount,
+            EntryModel.DbColumns.columnTitle:entry.title,
+            EntryModel.DbColumns.columnCreatedAt:entry.title,
+            EntryModel.DbColumns.columnCategory:entry.category,
+            EntryModel.DbColumns.columnDescription:entry.desc
+            ] as [String : Any]
+        entryRef.updateChildValues(entryVal)
+    }
+    
     
     /// Returns an array consisting of entries.
     ///
