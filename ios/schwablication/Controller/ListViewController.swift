@@ -26,6 +26,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         entryManager = EntryManager(refEntries: self.refEntries)
     }
     
+    /// Refreshing table content before view is appearing
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refreshTable()
@@ -69,6 +70,21 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     /// Passing the clicked item to the next view
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showEntry(id: (entryManager?.getEntriesList()[indexPath.row].id)!)
+    }
+    
+    func tableView(_: UITableView, canEditRowAt indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    /// Delete element by swipe
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            // handle delete (by removing the data from your array and updating the tableview)
+            entryManager?.deleteEntryById(id: (entryManager?.getEntriesList()[indexPath.row].id)!, index:indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
     }
     
     

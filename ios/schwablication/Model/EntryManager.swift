@@ -111,6 +111,17 @@ class EntryManager{
         completion(nil)
     }
     
+    
+    /// Delete entry by ID from firebase and by index from arraylist.
+    ///
+    /// - Parameters:
+    ///   - id: id of the entry
+    ///   - index: index in array
+    func deleteEntryById(id:String, index:Int){
+        self.refEntries.child(id).removeValue()
+        self.entriesList.remove(at: index)
+    }
+    
     /// Fetching all entries from the datebase and saving into
     /// an EntryModel array.
     /// Using a closure to return the value after using the database.

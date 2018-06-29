@@ -38,7 +38,11 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         
         refEntries = Database.database().reference().child("entries")
         entryManager = EntryManager(refEntries: self.refEntries)
-        
+    }
+    
+    /// Loading data before view is appearing
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadData()
     }
     
