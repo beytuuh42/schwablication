@@ -38,7 +38,9 @@ class EntryManager{
             EntryModel.DbColumns.columnAmount:amount as Double,
             EntryModel.DbColumns.columnTitle:title as String,
             EntryModel.DbColumns.columnCreatedAt:NSDate().timeIntervalSince1970 as Double,
-            EntryModel.DbColumns.columnCategory:category as String
+            EntryModel.DbColumns.columnCategory:category as String,
+            EntryModel.DbColumns.columnDescription:"" as String,
+            EntryModel.DbColumns.columnPhoto:"" as String
             ] as [String : Any]
         self.refEntries.child(id).setValue(entry)
     }
@@ -66,13 +68,16 @@ class EntryManager{
             while let entries = enumerator.nextObject() as? DataSnapshot{
                 let entryDic = entries.value as? NSDictionary
                 
-                let id = entryDic![EntryModel.DbColumns.columnId] as! String
-                let title = entryDic![EntryModel.DbColumns.columnTitle] as! String
-                let amount = entryDic![EntryModel.DbColumns.columnAmount] as! Double
-                let category = entryDic![EntryModel.DbColumns.columnCategory] as! String
-                let createdAt = entryDic![EntryModel.DbColumns.columnCreatedAt] as! Double
+                guard let id = entryDic![EntryModel.DbColumns.columnId] else { return }
+                guard let title = entryDic![EntryModel.DbColumns.columnTitle] else { return }
+                guard let amount = entryDic![EntryModel.DbColumns.columnAmount] else { return }
+                guard let category = entryDic![EntryModel.DbColumns.columnCategory] else { return }
+                guard let createdAt = entryDic![EntryModel.DbColumns.columnCreatedAt] else { return }
+                guard let desc = entryDic![EntryModel.DbColumns.columnDescription] else { return }
+                guard let photo = entryDic![EntryModel.DbColumns.columnPhoto] else { return }
                 
-                let entry = EntryModel(id: id, title: title, amount: amount, createdAt: createdAt, category: category)
+                let entry = EntryModel(id: id as! String, title: title as! String,desc: desc as! String, amount: amount as! Double, createdAt: createdAt as! Double,photo: photo as! String, category: category as! String)
+
                 self.entriesList.append(entry)
             }
             completion(self.entriesList)
@@ -191,14 +196,15 @@ class EntryManager{
     }
     
     func updateEntryById(entry:EntryModel){
-        let entryRef = refEntries.child("id/\(entry.id)")
+        let entryRef = refEntries.child("\(entry.id)")
         let entryVal = [
             EntryModel.DbColumns.columnId:entry.id,
             EntryModel.DbColumns.columnAmount:entry.amount,
             EntryModel.DbColumns.columnTitle:entry.title,
-            EntryModel.DbColumns.columnCreatedAt:entry.title,
+            EntryModel.DbColumns.columnCreatedAt:entry.createdAt,
             EntryModel.DbColumns.columnCategory:entry.category,
-            EntryModel.DbColumns.columnDescription:entry.desc
+            EntryModel.DbColumns.columnDescription:entry.desc,
+            EntryModel.DbColumns.columnPhoto:entry.photo
             ] as [String : Any]
         entryRef.updateChildValues(entryVal)
     }

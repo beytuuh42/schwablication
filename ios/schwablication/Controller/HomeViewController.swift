@@ -115,10 +115,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     func addDataToFirebase(category:String){
         if (isEmptyInput()){
             Alert().showBasic(title: "Incomplete Form", message: "Amount and Title field is required." , vc: self)
-            
         } else {
             entryManager!.addEntry(title: titleTextField.text!, amount: Double(amountTextField.text!)!,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             category: category)
-            
             loadData()
             textFieldDidBeginEditing(textField: amountTextField)
             textFieldDidBeginEditing(textField: titleTextField)
