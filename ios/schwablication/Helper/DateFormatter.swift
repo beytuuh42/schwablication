@@ -9,7 +9,7 @@
 import Foundation
 
 /// Helper class for formatting the date into a read-able String
-class DateFormatter {
+public class DateFormatter {
     
     var myTimeInterval:Double
     

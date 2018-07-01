@@ -44,6 +44,27 @@
                <Test
                   Identifier = "LoginViewUITest">
                </Test>
+               <Test
+                  Identifier = "RegisterViewUITest">
+               </Test>
+            </SkippedTests>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C4279E3220E57E76006FD30C"
+               BuildableName = "schwablicationTests.xctest"
+               BlueprintName = "schwablicationTests"
+               ReferencedContainer = "container:schwablication.xcodeproj">
+            </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "DateFormatterUnitTest">
+               </Test>
+               <Test
+                  Identifier = "ListViewUnitTest">
+               </Test>
             </SkippedTests>
          </TestableReference>
       </Testables>

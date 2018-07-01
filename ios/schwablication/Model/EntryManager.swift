@@ -45,6 +45,25 @@ class EntryManager{
         self.refEntries.child(id).setValue(entry)
     }
     
+    /// Adding a new entry to the database.
+    /// Using the params to fill and an auto generated ID.
+    /// - Parameters:
+    ///   - title: title of the entry - String
+    ///   - amount: amount of the entry - Double
+    ///   - category: title of the entry - String
+    func addEntry(id:String, title:String, amount:Double, category:String) -> [String: Any]{
+        let entry = [
+            EntryModel.DbColumns.columnId:id as String,
+            EntryModel.DbColumns.columnAmount:amount as Double,
+            EntryModel.DbColumns.columnTitle:title as String,
+            EntryModel.DbColumns.columnCreatedAt:NSDate().timeIntervalSince1970 as Double,
+            EntryModel.DbColumns.columnCategory:category as String,
+            EntryModel.DbColumns.columnDescription:"" as String,
+            EntryModel.DbColumns.columnPhoto:"" as String
+            ] as [String : Any]
+        return entry
+    }
+    
     
     
     /// Fetching all entries from the datebase and saving into

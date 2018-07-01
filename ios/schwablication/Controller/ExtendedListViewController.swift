@@ -11,7 +11,8 @@ import Firebase
 import AVFoundation
 
 class ExtendedListViewController: UIViewController {
-
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var titleTextField: UITextField!
@@ -28,12 +29,14 @@ class ExtendedListViewController: UIViewController {
     
     override func viewDidLoad() {
         view.accessibilityIdentifier = "extendedView"
+        self.navigationController!.navigationBar.isHidden = false
         photoHandler(iv: photoImaveView)
         if(entry?.photo != ""){
             photoImaveView.image = UIImage.gif(asset: "loading")
             ImageHelper().downloadImageByUrl(url: (entry?.photo)!, image: self.photoImaveView)
         }
-        
+        scrollView.isScrollEnabled = true
+        scrollView.contentSize = CGSize(width: 400, height: 2300)
     }
     
     override func viewWillAppear(_ animated: Bool) {
