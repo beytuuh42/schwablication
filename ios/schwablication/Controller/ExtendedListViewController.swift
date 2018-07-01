@@ -19,6 +19,7 @@ class ExtendedListViewController: UIViewController {
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var photoImaveView: UIImageView!
 
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var entry:EntryModel?
     var refEntries: DatabaseReference?
@@ -35,8 +36,14 @@ class ExtendedListViewController: UIViewController {
             photoImaveView.image = UIImage.gif(asset: "loading")
             ImageHelper().downloadImageByUrl(url: (entry?.photo)!, image: self.photoImaveView)
         }
-        scrollView.isScrollEnabled = true
-        scrollView.contentSize = CGSize(width: 400, height: 2300)
+        keyboardHandler()
+        super.viewDidLoad()
+        
+        self.amountTextField.delegate = self
+        self.descriptionTextField.delegate = self
+        self.titleTextField.delegate = self
+        self.dateTextField.delegate = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -145,5 +152,32 @@ extension ExtendedListViewController: UINavigationControllerDelegate{
         alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
+    }
+    func keyboardHandler(){
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    // keyboard will show
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    // keyboard will hide
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
+    
+    // hide keyboard, when touches outside
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.scrollView.endEditing(true)
     }
 }

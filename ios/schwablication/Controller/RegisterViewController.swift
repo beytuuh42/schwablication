@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-class RegisterViewController: UIViewController  {
+class RegisterViewController: UIViewController, UITextFieldDelegate  {
     
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -18,6 +18,10 @@ class RegisterViewController: UIViewController  {
         super.viewDidLoad()
         self.navigationController!.navigationBar.isHidden = false
         view.accessibilityIdentifier = "registerView"
+        
+        
+        self.emailTextField.delegate = self
+        self.passwordTextField.delegate = self
     }
     
     func handleRegister(){
@@ -48,5 +52,11 @@ class RegisterViewController: UIViewController  {
     @IBAction func onButtonClickCreateAccount(_ sender: UIButton) {
         handleRegister()
     }
+    
+    // hide keyboard, when touches outside
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
 }
 
