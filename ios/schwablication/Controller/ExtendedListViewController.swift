@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import AVFoundation
 
-class ExtendedListViewController: UIViewController {
+class ExtendedListViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var amountTextField: UITextField!
@@ -18,8 +18,6 @@ class ExtendedListViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var photoImaveView: UIImageView!
-
-    @IBOutlet weak var scrollView: UIScrollView!
     
     var entry:EntryModel?
     var refEntries: DatabaseReference?
@@ -30,7 +28,6 @@ class ExtendedListViewController: UIViewController {
     
     override func viewDidLoad() {
         view.accessibilityIdentifier = "extendedView"
-        self.navigationController!.navigationBar.isHidden = false
         photoHandler(iv: photoImaveView)
         if(entry?.photo != ""){
             photoImaveView.image = UIImage.gif(asset: "loading")
@@ -47,6 +44,7 @@ class ExtendedListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.navigationItem.setHidesBackButton(false, animated:true)
         amountTextField.text = String(format: "%.02f", (entry?.amount)!)
         titleTextField.text = entry?.title
         descriptionTextField.text = entry?.desc
@@ -70,8 +68,9 @@ class ExtendedListViewController: UIViewController {
         if(!didChange){
             let newEntry = EntryModel(id: (entry?.id)!, title: title, desc: desc, amount: amount, createdAt: (entry?.createdAt)!, photo: (entry?.photo)!, category: (entry?.category)!)
             entryManager?.updateEntryById(entry: newEntry)
-            self.performSegue(withIdentifier: "toListScreen", sender: self)
+            //self.performSegue(withIdentifier: "toListScreen", sender: self)
             //self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+            navigationController?.popViewController(animated: true)
         } else {
             let imgHelper = ImageHelper()
             let imgView = UIImageView()
@@ -80,8 +79,9 @@ class ExtendedListViewController: UIViewController {
             imgHelper.uploadImageToStorage(imgHelper.resizeImage(image: photoImaveView.image!, targetSize: CGSize(width:200.0, height:200.0)), completionBlock: { (fileUrl, errorMessage) in
                 let newEntry = EntryModel(id: (self.entry?.id)!, title: title, desc: desc, amount: amount, createdAt: (self.entry?.createdAt)!, photo: (fileUrl?.absoluteString)!, category: (self.entry?.category)!)
                 self.entryManager?.updateEntryById(entry: newEntry)
-                self.performSegue(withIdentifier: "toListScreen", sender: self)
+                //self.performSegue(withIdentifier: "toListScreen", sender: self)
                 //self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
             })
         }
     }
@@ -178,6 +178,7 @@ extension ExtendedListViewController: UINavigationControllerDelegate{
     
     // hide keyboard, when touches outside
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
         self.scrollView.endEditing(true)
     }
 }

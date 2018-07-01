@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DiY-jZ-4in">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oFt-dw-TzL">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,10 +13,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--List View Controller-->
+        <!--List-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ListViewController" customModule="schwablication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="List" id="BYZ-38-t0r" customClass="ListViewController" customModule="schwablication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -90,7 +90,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="UZV-qK-1Tc"/>
+                    <navigationItem key="navigationItem" title="List" id="UZV-qK-1Tc">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="Zc5-DG-GL8">
+                            <connections>
+                                <action selector="logoutButtonOnClick:" destination="BYZ-38-t0r" id="kHW-Jf-Zj9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tblEntries" destination="iwm-hw-KsA" id="bB3-8m-K2H"/>
                         <segue destination="HYX-Ay-tLw" kind="show" identifier="toExtendedScreen" id="p53-tl-IpS"/>
@@ -98,12 +104,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1572" y="192.95352323838082"/>
+            <point key="canvasLocation" x="-2769" y="806"/>
         </scene>
         <!--Home-->
         <scene sceneID="wcI-Em-LEu">
             <objects>
-                <viewController id="ihO-Om-KLa" customClass="HomeViewController" customModule="schwablication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Home" id="ihO-Om-KLa" customClass="HomeViewController" customModule="schwablication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BQ8-IW-ld7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -218,12 +224,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PTR-dg-kwb" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2511.1999999999998" y="-600.44977511244383"/>
+            <point key="canvasLocation" x="-3871" y="7"/>
         </scene>
-        <!--Register View Controller-->
+        <!--Register-->
         <scene sceneID="8XV-xc-Jpa">
             <objects>
-                <viewController id="Ohz-7t-txB" customClass="RegisterViewController" customModule="schwablication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Register" id="Ohz-7t-txB" customClass="RegisterViewController" customModule="schwablication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l0b-hG-5wT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -266,17 +272,17 @@
                     <connections>
                         <outlet property="emailTextField" destination="2G6-QA-Scj" id="WND-mY-Os1"/>
                         <outlet property="passwordTextField" destination="YiX-H9-pgc" id="7Ux-4N-CWD"/>
-                        <segue destination="DiY-jZ-4in" kind="show" identifier="toLoginScreen" id="Pl6-zT-uJp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TOZ-1q-aMt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6514.3999999999996" y="-111.0944527736132"/>
+            <point key="canvasLocation" x="-3050" y="-1084"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="3Y4-qh-KWR">
             <objects>
-                <tabBarController id="0mM-vK-V4V" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0mM-vK-V4V" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Bio-G3-kgS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -290,13 +296,13 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C5R-v4-gIx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3391.1999999999998" y="-253.2233883058471"/>
+            <point key="canvasLocation" x="-4812" y="310"/>
         </scene>
-        <!--Add Entry-->
+        <!--Update-->
         <scene sceneID="cbr-92-Lxn">
             <objects>
-                <viewController title="Add Entry" hidesBottomBarWhenPushed="YES" id="HYX-Ay-tLw" customClass="ExtendedListViewController" customModule="schwablication" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ZIP-zQ-KER">
+                <viewController title="Update" hidesBottomBarWhenPushed="YES" id="HYX-Ay-tLw" customClass="ExtendedListViewController" customModule="schwablication" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="center" id="ZIP-zQ-KER">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -339,28 +345,29 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ovD-GZ-NsG">
                                                 <rect key="frame" x="138" y="222" width="99" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bgy-9S-mNI">
                                                 <rect key="frame" x="138" y="319" width="99" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="descriptionTextField"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dFI-YD-FRD">
                                                 <rect key="frame" x="138" y="413" width="99" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                             </textField>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Mk6-BD-Q8m">
                                                 <rect key="frame" x="47" y="543" width="300" height="300"/>
@@ -369,18 +376,21 @@
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYl-K7-FZc">
                                                 <rect key="frame" x="94" y="877" width="207" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="saveButton"/>
                                                 <state key="normal" title="Save"/>
                                                 <connections>
                                                     <action selector="saveOnClick:" destination="HYX-Ay-tLw" eventType="touchUpInside" id="0TX-7c-Ddg"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="extendedView"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1000" id="FoZ-Zf-sab"/>
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="9eB-I3-cSi" secondAttribute="bottom" id="DPf-Af-fGT"/>
                                     <constraint firstAttribute="trailing" secondItem="9eB-I3-cSi" secondAttribute="trailing" id="O52-Vw-aTw"/>
@@ -389,7 +399,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="yvh-md-60u" firstAttribute="leading" secondItem="HaV-0A-rYk" secondAttribute="leading" id="5Hx-JM-geM"/>
                             <constraint firstItem="9eB-I3-cSi" firstAttribute="width" secondItem="ZIP-zQ-KER" secondAttribute="width" id="FfR-Cm-xyp"/>
@@ -412,12 +422,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7mw-sV-wCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-652" y="192.95352323838082"/>
+            <point key="canvasLocation" x="-1970" y="656"/>
         </scene>
-        <!--Login View Controller-->
+        <!--Login-->
         <scene sceneID="H3y-qA-Klo">
             <objects>
-                <viewController storyboardIdentifier="loginViewController" id="97c-bb-IKh" customClass="LoginViewController" customModule="schwablication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewController" title="Login" id="97c-bb-IKh" customClass="LoginViewController" customModule="schwablication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fgA-ix-lh5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -467,17 +477,16 @@
                         <accessibility key="accessibilityConfiguration" identifier="LoginView"/>
                         <viewLayoutGuide key="safeArea" id="ho3-lc-vcw"/>
                     </view>
-                    <navigationItem key="navigationItem" id="yuO-by-Zpk"/>
+                    <navigationItem key="navigationItem" title="Login" id="yuO-by-Zpk"/>
                     <connections>
                         <outlet property="emailTextField" destination="7Uh-qY-8IY" id="vhG-rs-cM7"/>
                         <outlet property="onBottonClickRegister" destination="e2L-gH-fSa" id="YnZ-bK-2kc"/>
                         <outlet property="passwordTextField" destination="bd8-gH-4N4" id="Z4J-0N-eil"/>
-                        <segue destination="0mM-vK-V4V" kind="show" identifier="toHomeScreen" id="Huu-Lk-q6Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cHu-Pg-5ZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4448.8000000000002" y="-253.2233883058471"/>
+            <point key="canvasLocation" x="-3871" y="-672"/>
         </scene>
         <!--List-->
         <scene sceneID="xu1-C6-WcK">
@@ -490,40 +499,40 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ld6-SC-Mzw">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="TUe-hG-J6D"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NCE-Oe-yE8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2511.1999999999998" y="192.95352323838082"/>
+            <point key="canvasLocation" x="-3871" y="806"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="0iH-vg-IH0">
+        <scene sceneID="rcF-OO-HWD">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DiY-jZ-4in" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oFt-dw-TzL" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="02i-Bj-DkI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BgC-cc-0e7">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="g51-cX-Frz">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
                     <connections>
-                        <segue destination="97c-bb-IKh" kind="relationship" relationship="rootViewController" id="D5k-Xe-uSh"/>
+                        <segue destination="97c-bb-IKh" kind="relationship" relationship="rootViewController" id="w6m-ox-Cyl"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dJ8-1n-Iyb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xUB-pD-pAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5388" y="-253.2233883058471"/>
+            <point key="canvasLocation" x="-4812" y="-672"/>
         </scene>
     </scenes>
     <resources>
         <image name="homeIcon" width="32" height="32"/>
         <image name="listIcon" width="32" height="32"/>
-        <image name="logoIcon" width="1536" height="1536"/>
+        <image name="logoIcon" width="512" height="512"/>
         <image name="placeholder" width="300" height="300"/>
         <namedColor name="inColor">
             <color red="0.22900000214576721" green="0.75499999523162842" blue="0.4779999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

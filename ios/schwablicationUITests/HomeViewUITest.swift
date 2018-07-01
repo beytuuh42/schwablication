@@ -26,10 +26,10 @@ class HomeViewUITest: XCTestCase {
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         
-        // Running app and going to the list view
+        // Running app and performing login
         app = XCUIApplication()
         app.launch()
-       performLogin()
+        performLogin()
     }
     
     override func tearDown() {

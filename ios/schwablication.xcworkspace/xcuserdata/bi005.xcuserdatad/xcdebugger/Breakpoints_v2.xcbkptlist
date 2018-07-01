@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "schwablication/Model/EntryManager.swift"
-            timestampString = "552161025.381817"
+            timestampString = "552175273.534999"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "schwablication/Model/EntryManager.swift"
-            timestampString = "552161025.381968"
+            timestampString = "552175273.535128"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "schwablication/Controller/LoginViewController.swift"
-            timestampString = "552161025.382057"
+            timestampString = "552175273.535255"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "handleLogin()"
             landmarkType = "7">
             <Locations>
@@ -90,12 +90,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "schwablication/Controller/ExtendedListViewController.swift"
-            timestampString = "552161025.382151"
+            timestampString = "552175273.535404"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
             endingLineNumber = "120"
-            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
+            landmarkName = "useCamera()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

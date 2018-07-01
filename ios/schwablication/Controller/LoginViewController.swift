@@ -17,12 +17,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController!.navigationBar.isHidden = true
         view.accessibilityIdentifier = "loginView"
         
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+//        navigationItem.setHidesBackButton(true, animated:true)
+//        navigationController?.visibleViewController?.title = "Login"
     }
     
     func handleLogin(){
@@ -35,7 +39,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 if error == nil && user != nil {
                     let alertController = UIAlertController(title: "Success", message: "Successfully logged in!", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
-                        self.performSegue(withIdentifier: "toHomeScreen", sender: self)
+                        //self.performSegue(withIdentifier: "toHomeScreen", sender: self)
+                        self.loadNavBar()
                     }
                     alertController.addAction(okAction)
                     self.present(alertController, animated: true, completion:nil)
@@ -57,5 +62,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func onButtonClickLogin(_ sender: Any) {
         handleLogin()
+    }
+    
+    func loadNavBar(){
+        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let nav = mainStoryboardIpad.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = nav
     }
 }

@@ -21,7 +21,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     /// Loading data into the view
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController!.navigationBar.isHidden = true
         view.accessibilityIdentifier = "listView"
         refEntries = Database.database().reference().child("entries")
         entryManager = EntryManager(refEntries: self.refEntries)
@@ -31,6 +30,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     /// Refreshing table content before view is appearing
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+//        tabBarController?.navigationItem.setHidesBackButton(true, animated:true)
+//        navigationController?.visibleViewController?.title = "List"
         refreshTable()
     }
     
@@ -110,6 +111,19 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         return cell
+    }
+    
+    @IBAction func logoutButtonOnClick(_ sender: UIBarButtonItem) {
+        try! Auth.auth().signOut()
+        if let storyboard = self.storyboard {
+            let vc = storyboard.instantiateViewController(withIdentifier: "LoginNavController") as! UINavigationController
+            self.present(vc, animated: true, completion: nil)
+        }
+        
+//        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let nav = mainStoryboardIpad.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        appDelegate.window?.rootViewController = nav
     }
 }
 
