@@ -60,7 +60,8 @@ class ExtendedListViewController: UIViewController {
         if(!didChange){
             let newEntry = EntryModel(id: (entry?.id)!, title: title, desc: desc, amount: amount, createdAt: (entry?.createdAt)!, photo: (entry?.photo)!, category: (entry?.category)!)
             entryManager?.updateEntryById(entry: newEntry)
-            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+            self.performSegue(withIdentifier: "toListScreen", sender: self)
+            //self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         } else {
             let imgHelper = ImageHelper()
             let imgView = UIImageView()
@@ -69,7 +70,8 @@ class ExtendedListViewController: UIViewController {
             imgHelper.uploadImageToStorage(imgHelper.resizeImage(image: photoImaveView.image!, targetSize: CGSize(width:200.0, height:200.0)), completionBlock: { (fileUrl, errorMessage) in
                 let newEntry = EntryModel(id: (self.entry?.id)!, title: title, desc: desc, amount: amount, createdAt: (self.entry?.createdAt)!, photo: (fileUrl?.absoluteString)!, category: (self.entry?.category)!)
                 self.entryManager?.updateEntryById(entry: newEntry)
-                self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                self.performSegue(withIdentifier: "toListScreen", sender: self)
+                //self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
             })
         }
     }

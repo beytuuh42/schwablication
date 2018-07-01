@@ -10,7 +10,13 @@ import XCTest
 
 class LoginViewUITest: XCTestCase {
     
-    var app:XCUIApplication!
+    var app: XCUIApplication!
+    var emailTextField: XCUIElement!
+    var passwordTextField: XCUIElement!
+    var loginButton: XCUIElement!
+    var registerButton: XCUIElement!
+    let email = "test@test.de"
+    let pass = "testtest"
     
     override func setUp() {
         super.setUp()
@@ -23,6 +29,11 @@ class LoginViewUITest: XCTestCase {
         // Running app and going to the list view
         app = XCUIApplication()
         app.launch()
+        
+        emailTextField = app.textFields["emailTextField"]
+        passwordTextField = app.secureTextFields["passwordTextField"]
+        loginButton = app.buttons["loginButton"]
+        registerButton = app.buttons["registerButton"]
     }
     
     func testScreenExists() {
@@ -30,25 +41,34 @@ class LoginViewUITest: XCTestCase {
     }
     
     func testPerformLogin(){
-        let app = XCUIApplication()
-        
-        let emailTextField = app.textFields["emailTextField"]
-        let passwordTextField = app.secureTextFields["passwordTextField"]
-        let loginButton = app.buttons["loginButton"]
-
-
         emailTextField.tap()
-        emailTextField.typeText("test@test.de")
+        emailTextField.typeText(email)
         passwordTextField.tap()
-        passwordTextField.typeText("testtest")
+        passwordTextField.typeText(pass)
         
         loginButton.tap()
         app.alerts["Success"].buttons["OK"].tap()
         XCTAssertTrue(app.otherElements["homeView"].exists)
     }
     
+    func testPerformLoginWrongCredentials(){
+        emailTextField.tap()
+        emailTextField.typeText(email)
+        passwordTextField.tap()
+        passwordTextField.typeText("test")
+        
+        loginButton.tap()
+        app.alerts["Error login"].buttons["OK"].tap()
+        XCTAssertTrue(app.otherElements["loginView"].exists)
+    }
+    
+    func testPerformLoginNoInput(){
+        loginButton.tap()
+        app.alerts["Incomplete Form"].buttons["OK"].tap()
+        XCTAssertTrue(app.otherElements["loginView"].exists)
+    }
+    
     func testRegisterExists() {
-        let registerButton = app.buttons["registerButton"]
         registerButton.tap()
         XCTAssertTrue(app.otherElements["registerView"].exists)
     }

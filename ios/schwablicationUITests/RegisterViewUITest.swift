@@ -10,6 +10,13 @@ import XCTest
 
 class RegisterViewUITest: XCTestCase {
         
+    var app: XCUIApplication!
+    var emailTextField: XCUIElement!
+    var passwordTextField: XCUIElement!
+    var createAccountButton: XCUIElement!
+    let email = "test@test.de"
+    let pass = "testtest"
+    
     override func setUp() {
         super.setUp()
         
@@ -17,20 +24,46 @@ class RegisterViewUITest: XCTestCase {
         
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        
+        // Running app and going to the list view
+        app = XCUIApplication()
+        app.launch()
+        app.buttons["registerButton"].tap()
+        
+        emailTextField = app.textFields["emailTextField"]
+        passwordTextField = app.secureTextFields["passwordTextField"]
+        createAccountButton = app.buttons["createAccountButton"]
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+    func testScreenExists() {
+        XCTAssertTrue(app.otherElements["registerView"].exists)
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testPerformRegister(){
+        emailTextField.tap()
+        emailTextField.typeText(email)
+        passwordTextField.tap()
+        passwordTextField.typeText(pass)
+        
+        createAccountButton.tap()
+        app.alerts["Success"].buttons["OK"].tap()
+        XCTAssertTrue(app.otherElements["loginView"].exists)
     }
     
+    func testPerformRegisterExistingCredentials(){
+        emailTextField.tap()
+        emailTextField.typeText("test@test.de")
+        passwordTextField.tap()
+        passwordTextField.typeText("test")
+        
+        createAccountButton.tap()
+        app.alerts["Error creating account"].buttons["OK"].tap()
+        XCTAssertTrue(app.otherElements["registerView"].exists)
+    }
+    
+    func testPerformLoginNoInput(){
+        createAccountButton.tap()
+        app.alerts["Incomplete Form"].buttons["OK"].tap()
+        XCTAssertTrue(app.otherElements["registerView"].exists)
+    }
 }
