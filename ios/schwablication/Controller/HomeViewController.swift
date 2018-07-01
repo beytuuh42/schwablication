@@ -16,11 +16,16 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var titleTextField: UITextField!
+    
     @IBOutlet weak var bilanzLabel: UILabel!
+    
+    
     var refEntries: DatabaseReference!
     var entryManager:EntryManager?
     
     var bilanz:Double = 0
+    let inColor = UIColor(named:"inColor")
+    let outColor = UIColor(named:"outColor")
     
     /// Displayed chart values
     var inDataEntry = PieChartDataEntry(value: 0.0)
@@ -96,7 +101,11 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     /// Calculating the bilanz also showing it formatted on the pie chart
     func loadBilanz(){
         bilanz = (entryManager?.getTotalIncAmount())! - (entryManager?.getTotalOutAmount())!
-        pieChart.centerText = String(format: "%.02f €", bilanz)
+        self.bilanzLabel.text = String(format: "%.02f €", bilanz)
+        if bilanz >= 0 {
+        self.bilanzLabel.textColor = outColor
+        }
+        self.bilanzLabel.textColor = inColor
     }
     
     
