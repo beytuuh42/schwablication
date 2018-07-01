@@ -9,14 +9,19 @@
 import Foundation
 import Firebase
 
-class RegisterViewController: UIViewController  {
+class RegisterViewController: UIViewController, UITextFieldDelegate  {
     
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     
     override func viewDidLoad() {
+        keyboardHandler()
         super.viewDidLoad()
         view.accessibilityIdentifier = "registerView"
+        
+        
+        self.emailTextField.delegate = self
+        self.passwordTextField.delegate = self
     }
     
     func handleRegister(){
@@ -47,5 +52,33 @@ class RegisterViewController: UIViewController  {
     @IBAction func onButtonClickCreateAccount(_ sender: UIButton) {
         handleRegister()
     }
+    func keyboardHandler(){
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    // keyboard will show
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    // keyboard will hide
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
+    
+    // hide keyboard, when touches outside
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
 }
 

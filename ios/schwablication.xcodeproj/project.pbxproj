@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A32FEE220E91BBB00B7296A /* HomeViewUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A32FEE120E91BBB00B7296A /* HomeViewUITest.swift */; };
 		3AF02E6020E5109A00A206A5 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF02E5F20E5109A00A206A5 /* Alert.swift */; };
 		3AF02E6220E510CC00A206A5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF02E6120E510CC00A206A5 /* HomeViewController.swift */; };
 		4712A0C97A0B5650104594C1 /* Pods_schwablicationUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0079AAD9A61CC9281FF97184 /* Pods_schwablicationUITests.framework */; };
@@ -52,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		0079AAD9A61CC9281FF97184 /* Pods_schwablicationUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_schwablicationUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A32FEE120E91BBB00B7296A /* HomeViewUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewUITest.swift; sourceTree = "<group>"; };
 		3AF02E5F20E5109A00A206A5 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		3AF02E6120E510CC00A206A5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5B4E2ED79ADD392E28586DE7 /* Pods-schwablication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-schwablication.release.xcconfig"; path = "Pods/Target Support Files/Pods-schwablication/Pods-schwablication.release.xcconfig"; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				C4279E4D20E57F1D006FD30C /* ListViewUITest.swift */,
 				C41E155320E9025B001849F1 /* RegisterViewUITest.swift */,
 				C4279E4520E57E7D006FD30C /* Info.plist */,
+				3A32FEE120E91BBB00B7296A /* HomeViewUITest.swift */,
 			);
 			path = schwablicationUITests;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4279E4E20E57F1D006FD30C /* ListViewUITest.swift in Sources */,
+				3A32FEE220E91BBB00B7296A /* HomeViewUITest.swift in Sources */,
 				C41E155620E9026C001849F1 /* LoginViewUITest.swift in Sources */,
 				C41E155420E9025B001849F1 /* RegisterViewUITest.swift in Sources */,
 			);
@@ -525,14 +529,14 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 63DAK33447;
+				DEVELOPMENT_TEAM = 3D8S2J6WC5;
 				INFOPLIST_FILE = schwablicationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablicationTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablicationTests23;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -546,14 +550,14 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 63DAK33447;
+				DEVELOPMENT_TEAM = 3D8S2J6WC5;
 				INFOPLIST_FILE = schwablicationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablicationTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablicationTests23;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -566,14 +570,14 @@
 			baseConfigurationReference = 77A771D0DF1AB17308BDB070 /* Pods-schwablicationUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 63DAK33447;
+				DEVELOPMENT_TEAM = 3D8S2J6WC5;
 				INFOPLIST_FILE = schwablicationUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablicationUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablicationUITests23;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -586,14 +590,14 @@
 			baseConfigurationReference = 687682AF0EC02EE498DFB8CB /* Pods-schwablicationUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 63DAK33447;
+				DEVELOPMENT_TEAM = 3D8S2J6WC5;
 				INFOPLIST_FILE = schwablicationUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablicationUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablicationUITests23;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -721,13 +725,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 63DAK33447;
+				DEVELOPMENT_TEAM = 3D8S2J6WC5;
 				INFOPLIST_FILE = schwablication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablication;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablication23;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -740,13 +744,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 63DAK33447;
+				DEVELOPMENT_TEAM = 3D8S2J6WC5;
 				INFOPLIST_FILE = schwablication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablication;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablication23;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

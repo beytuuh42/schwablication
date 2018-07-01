@@ -24,7 +24,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         view.accessibilityIdentifier = "listView"
         refEntries = Database.database().reference().child("entries")
         entryManager = EntryManager(refEntries: self.refEntries)
-    }
+        
+         }
     
     /// Refreshing table content before view is appearing
     override func viewWillAppear(_ animated: Bool) {
@@ -71,7 +72,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegue(withIdentifier: "toExtendedScreen", sender: self)
     }
     
-    func tableView(_: UITableView, canEditRowAt indexPath: NSIndexPath) -> Bool {
+    func tableView(_: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     

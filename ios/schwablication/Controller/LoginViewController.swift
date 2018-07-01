@@ -9,15 +9,21 @@
 import Foundation
 import Firebase
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var onBottonClickRegister: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     
     override func viewDidLoad() {
+        keyboardHandler()
         super.viewDidLoad()
+        
         view.accessibilityIdentifier = "loginView"
+        
+        self.emailTextField.delegate = self
+        self.passwordTextField.delegate = self
+        
     }
     
     func handleLogin(){
@@ -43,7 +49,33 @@ class LoginViewController: UIViewController {
             alertController.showBasic(title: "Incomplete Form", message: "E-Mail and password field are required." , vc: self)
         }
     }
+    func keyboardHandler(){
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    // keyboard will show
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
     
+    // keyboard will hide
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
+    
+    // hide keyboard, when touches outside
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     @IBAction func onButtonClickLogin(_ sender: Any) {
         handleLogin()
     }
