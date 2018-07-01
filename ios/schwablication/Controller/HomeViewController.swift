@@ -103,9 +103,10 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         bilanz = (entryManager?.getTotalIncAmount())! - (entryManager?.getTotalOutAmount())!
         self.bilanzLabel.text = String(format: "%.02f €", bilanz)
         if bilanz >= 0 {
-        self.bilanzLabel.textColor = outColor
-        }
         self.bilanzLabel.textColor = inColor
+        } else {
+          self.bilanzLabel.textColor = outColor
+        }
     }
     
     
