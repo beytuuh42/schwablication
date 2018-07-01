@@ -37,6 +37,14 @@
                BlueprintName = "schwablicationUITests"
                ReferencedContainer = "container:schwablication.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "ListViewUITest">
+               </Test>
+               <Test
+                  Identifier = "RegisterViewUITest">
+               </Test>
+            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO">

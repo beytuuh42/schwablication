@@ -35,6 +35,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     /// Loading the handler for the keyboard, getting references
     /// and loading data.
     override func viewDidLoad() {
+        view.accessibilityIdentifier = "homeView"
         keyboardHandler()
         super.viewDidLoad()
         

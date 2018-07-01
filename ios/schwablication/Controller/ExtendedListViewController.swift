@@ -27,6 +27,7 @@ class ExtendedListViewController: UIViewController {
 
     
     override func viewDidLoad() {
+        view.accessibilityIdentifier = "extendedView"
         photoHandler(iv: photoImaveView)
         if(entry?.photo != ""){
             photoImaveView.image = UIImage.gif(asset: "loading")
@@ -64,21 +65,14 @@ class ExtendedListViewController: UIViewController {
             let imgHelper = ImageHelper()
             let imgView = UIImageView()
             imgView.image = UIImage.gif(asset: "loading")
- 
-            
             imgView.contentMode = .scaleAspectFit
             imgHelper.uploadImageToStorage(imgHelper.resizeImage(image: photoImaveView.image!, targetSize: CGSize(width:200.0, height:200.0)), completionBlock: { (fileUrl, errorMessage) in
                 let newEntry = EntryModel(id: (self.entry?.id)!, title: title, desc: desc, amount: amount, createdAt: (self.entry?.createdAt)!, photo: (fileUrl?.absoluteString)!, category: (self.entry?.category)!)
                 self.entryManager?.updateEntryById(entry: newEntry)
                 self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
             })
-            
         }
     }
-    
-    
-    
-    
 }
 
 extension ExtendedListViewController: UIImagePickerControllerDelegate{

@@ -13,6 +13,8 @@
 		47A93B173B40B79BAD4415EC /* Pods_schwablicationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC3626A17489256BBE8B483 /* Pods_schwablicationTests.framework */; };
 		C40FD89F20E7C9CA00CDF282 /* ExtendedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40FD89E20E7C9CA00CDF282 /* ExtendedListViewController.swift */; };
 		C40FD8A120E82A7D00CDF282 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40FD8A020E82A7C00CDF282 /* UIImage+Gif.swift */; };
+		C41E155420E9025B001849F1 /* RegisterViewUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41E155320E9025B001849F1 /* RegisterViewUITest.swift */; };
+		C41E155620E9026C001849F1 /* LoginViewUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41E155520E9026C001849F1 /* LoginViewUITest.swift */; };
 		C41E70E420D833200033CC18 /* EntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41E70E320D833200033CC18 /* EntryModel.swift */; };
 		C4279E4E20E57F1D006FD30C /* ListViewUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4279E4D20E57F1D006FD30C /* ListViewUITest.swift */; };
 		C4279E5020E57F3C006FD30C /* ListViewUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4279E4F20E57F3C006FD30C /* ListViewUnitTest.swift */; };
@@ -61,6 +63,8 @@
 		B6872A711C04FAA78DFFFA4E /* Pods-schwablicationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-schwablicationTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-schwablicationTests/Pods-schwablicationTests.release.xcconfig"; sourceTree = "<group>"; };
 		C40FD89E20E7C9CA00CDF282 /* ExtendedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedListViewController.swift; sourceTree = "<group>"; };
 		C40FD8A020E82A7C00CDF282 /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
+		C41E155320E9025B001849F1 /* RegisterViewUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewUITest.swift; sourceTree = "<group>"; };
+		C41E155520E9026C001849F1 /* LoginViewUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewUITest.swift; sourceTree = "<group>"; };
 		C41E70E320D833200033CC18 /* EntryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryModel.swift; sourceTree = "<group>"; };
 		C4279E3320E57E76006FD30C /* schwablicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = schwablicationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4279E3720E57E76006FD30C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -148,7 +152,9 @@
 		C4279E4220E57E7D006FD30C /* schwablicationUITests */ = {
 			isa = PBXGroup;
 			children = (
+				C41E155520E9026C001849F1 /* LoginViewUITest.swift */,
 				C4279E4D20E57F1D006FD30C /* ListViewUITest.swift */,
+				C41E155320E9025B001849F1 /* RegisterViewUITest.swift */,
 				C4279E4520E57E7D006FD30C /* Info.plist */,
 			);
 			path = schwablicationUITests;
@@ -460,6 +466,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4279E4E20E57F1D006FD30C /* ListViewUITest.swift in Sources */,
+				C41E155620E9026C001849F1 /* LoginViewUITest.swift in Sources */,
+				C41E155420E9025B001849F1 /* RegisterViewUITest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,7 +721,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3D8S2J6WC5;
+				DEVELOPMENT_TEAM = 63DAK33447;
 				INFOPLIST_FILE = schwablication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -732,7 +740,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3D8S2J6WC5;
+				DEVELOPMENT_TEAM = 63DAK33447;
 				INFOPLIST_FILE = schwablication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
