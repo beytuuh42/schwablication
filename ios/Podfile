@@ -20,6 +20,7 @@ target 'schwablication' do
   target 'schwablicationUITests' do
     inherit! :search_paths
     # Pods for testing
+   pod 'Charts'
   end
 
 end

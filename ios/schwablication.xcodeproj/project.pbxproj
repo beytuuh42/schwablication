@@ -16,11 +16,6 @@
 		C40FD8A120E82A7D00CDF282 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40FD8A020E82A7C00CDF282 /* UIImage+Gif.swift */; };
 		C41E155420E9025B001849F1 /* RegisterViewUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41E155320E9025B001849F1 /* RegisterViewUITest.swift */; };
 		C41E155620E9026C001849F1 /* LoginViewUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41E155520E9026C001849F1 /* LoginViewUITest.swift */; };
-		C41E155A20E926AB001849F1 /* DateFormatterUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41E155920E926AB001849F1 /* DateFormatterUnitTest.swift */; };
-		C41E155B20E9275B001849F1 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FB3CDD20DE853B008E4E21 /* DateFormatter.swift */; };
-		C41E156220E92CB1001849F1 /* EntryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FB3CDB20DD38A5008E4E21 /* EntryManager.swift */; };
-		C41E156320E930F3001849F1 /* EntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41E70E320D833200033CC18 /* EntryModel.swift */; };
-		C41E156420E931B9001849F1 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44B610C20D84AD5004EBFA8 /* Category.swift */; };
 		C41E156620E9556D001849F1 /* ExtendedListViewUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41E156520E9556D001849F1 /* ExtendedListViewUITest.swift */; };
 		C41E70E420D833200033CC18 /* EntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41E70E320D833200033CC18 /* EntryModel.swift */; };
 		C4279E4E20E57F1D006FD30C /* ListViewUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4279E4D20E57F1D006FD30C /* ListViewUITest.swift */; };
@@ -279,6 +274,7 @@
 				C4279E3D20E57E7D006FD30C /* Sources */,
 				C4279E3E20E57E7D006FD30C /* Frameworks */,
 				C4279E3F20E57E7D006FD30C /* Resources */,
+				0E578224A813F2E52F42D412 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -380,6 +376,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0E578224A813F2E52F42D412 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-schwablicationUITests/Pods-schwablicationUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-schwablicationUITests/Pods-schwablicationUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3E4C61EE1EDBDCF444F74BD1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -467,11 +481,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C41E156320E930F3001849F1 /* EntryModel.swift in Sources */,
-				C41E155B20E9275B001849F1 /* DateFormatter.swift in Sources */,
-				C41E155A20E926AB001849F1 /* DateFormatterUnitTest.swift in Sources */,
-				C41E156220E92CB1001849F1 /* EntryManager.swift in Sources */,
-				C41E156420E931B9001849F1 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,17 +546,13 @@
 /* Begin XCBuildConfiguration section */
 		C4279E3A20E57E76006FD30C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 75E38239E44F2612E9025CDF /* Pods-schwablication.debug.xcconfig */;
+			baseConfigurationReference = AFF6FAE9EAD609BE0FCCB4E3 /* Pods-schwablicationTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 63DAK33447;
 				INFOPLIST_FILE = schwablicationTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS) $(PROJECT_DIR)/Carthage/Build/iOS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablicationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -564,11 +569,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 63DAK33447;
 				INFOPLIST_FILE = schwablicationTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS) $(PROJECT_DIR)/Carthage/Build/iOS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablicationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -579,16 +580,12 @@
 		};
 		C4279E4920E57E7D006FD30C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 75E38239E44F2612E9025CDF /* Pods-schwablication.debug.xcconfig */;
+			baseConfigurationReference = 77A771D0DF1AB17308BDB070 /* Pods-schwablicationUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 63DAK33447;
 				INFOPLIST_FILE = schwablicationUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablicationUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -604,11 +601,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 63DAK33447;
 				INFOPLIST_FILE = schwablicationUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablicationUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -739,10 +732,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 63DAK33447;
 				INFOPLIST_FILE = schwablication/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -758,10 +748,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 63DAK33447;
 				INFOPLIST_FILE = schwablication/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
