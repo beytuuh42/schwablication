@@ -14,7 +14,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tblEntries: UITableView!
     var refEntries: DatabaseReference!
     var entryManager:EntryManager?
-
+    var selectedIndex = 0
     
     /// Loading the application.
     /// Declaring the references for our database and model manager class.
@@ -32,26 +32,15 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         refreshTable()
     }
     
-    
     /// After completion of fetching, reloading the table for the view
     func refreshTable(){
         entryManager?.fetchAllData(completion: { entry in
             if entry != nil {
-                print("Refreshing table")
+                print("Refreshed table")
             } else {
                 print("ListViewController/refreshTable: Couldn't fetch data")
             }
             self.tblEntries.reloadData()
-        })
-    }
-    
-    func showEntry(id:String){
-        entryManager?.getEntryBdId(id:id,completion: { entry in
-            if let entry = entry {
-                print(entry.description)
-            } else {
-                print("ListViewController/showEntry: Couldn't fetch data")
-            }
         })
     }
     
@@ -67,9 +56,19 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         return configureCell(cell: cell, indexPath: indexPath)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toExtendedScreen" {
+            let vc : ExtendedListViewController = segue.destination as! ExtendedListViewController
+            vc.entry = entryManager?.getEntriesList()[selectedIndex]
+            vc.entryManager = entryManager
+            vc.refEntries = refEntries
+        }
+    }
+    
     /// Passing the clicked item to the next view
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        showEntry(id: (entryManager?.getEntriesList()[indexPath.row].id)!)
+        selectedIndex = indexPath.row
+        performSegue(withIdentifier: "toExtendedScreen", sender: self)
     }
     
     func tableView(_: UITableView, canEditRowAt indexPath: NSIndexPath) -> Bool {
@@ -101,6 +100,12 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.lblTitle.text = entry.title
         cell.lblDate.text = DateFormatter(ti: entry.createdAt).getFormattedDate()
         cell.lblAmount.text = String(format: "%.02f €", entry.amount)
+        
+        if(entry.category == Category.Ausgaben.description){
+            cell.lblAmount.textColor = UIColor.red
+        } else {
+            cell.lblAmount.textColor = UIColor.init(red: 0, green: 0.7, blue: 0.1, alpha: 1)
+        }
         
         return cell
     }

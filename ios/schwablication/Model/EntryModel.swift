@@ -8,24 +8,18 @@
 import Firebase
 
 
-
-
 public class EntryModel{
     
     /// Referencing to our firebase database child 'entries'
     var refEntries: DatabaseReference = Database.database().reference().child("entries")
     
     let id: String
-    let title: String
+    var title: String
     var desc: String = ""
-    let amount: Double
-    let createdAt: Double
+    var amount: Double
+    var createdAt: Double
     var photo: String = ""
     let category: String
-    
-    
-    /// Converting the entry data into a read-able String
-    public var description: String { return "Entry: id: \(id), title: \(title), desc: \(desc), amount: \(amount), createdAt: \(createdAt), category: \(category)," }
     
     /// Initializing an Entry Object for the list view
     init(id:String, title:String, amount: Double, createdAt: Double, category: String){
@@ -59,4 +53,9 @@ public class EntryModel{
         static let columnPhoto = "photo"
     }
     
+}
+extension EntryModel: CustomStringConvertible{
+    
+    /// Converting the entry data into a read-able String
+    public var description: String { return "Entry: id: \(id), title: \(title), desc: \(desc), amount: \(amount), createdAt: \(createdAt), category: \(category), photo: \(photo)," }
 }
