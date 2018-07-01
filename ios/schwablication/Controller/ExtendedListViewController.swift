@@ -10,8 +10,9 @@ import UIKit
 import Firebase
 import AVFoundation
 
-class ExtendedListViewController: UIViewController, UITextFieldDelegate {
-
+class ExtendedListViewController: UIViewController {
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var titleTextField: UITextField!
@@ -29,6 +30,7 @@ class ExtendedListViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         view.accessibilityIdentifier = "extendedView"
+        self.navigationController!.navigationBar.isHidden = false
         photoHandler(iv: photoImaveView)
         if(entry?.photo != ""){
             photoImaveView.image = UIImage.gif(asset: "loading")

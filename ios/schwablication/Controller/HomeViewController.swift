@@ -36,6 +36,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     /// and loading data.
     override func viewDidLoad() {
         view.accessibilityIdentifier = "homeView"
+        self.navigationController!.navigationBar.isHidden = true
         keyboardHandler()
         super.viewDidLoad()
         
