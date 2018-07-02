@@ -1,5 +1,4 @@
-# Wamboo
-Schwablication
+# Schwablication
 
 ## Project Members
 
