@@ -40,19 +40,6 @@ public class EntryModel{
         self.photo = photo
         self.category = category
     }
-    
-    
-    /// Column names for the database
-    public struct DbColumns{
-        static let columnId = "id"
-        static let columnTitle = "title"
-        static let columnDescription = "description"
-        static let columnAmount = "amount"
-        static let columnCategory = "category"
-        static let columnCreatedAt = "created_at"
-        static let columnPhoto = "photo"
-    }
-    
 }
 extension EntryModel: CustomStringConvertible{
     

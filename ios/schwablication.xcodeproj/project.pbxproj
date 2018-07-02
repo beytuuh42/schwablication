@@ -23,6 +23,7 @@
 		C44B610920D834A6004EBFA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C44B610820D834A6004EBFA8 /* GoogleService-Info.plist */; };
 		C44B610B20D83C2D004EBFA8 /* ListViewControllerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44B610A20D83C2C004EBFA8 /* ListViewControllerTableViewCell.swift */; };
 		C44B610D20D84AD5004EBFA8 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44B610C20D84AD5004EBFA8 /* Category.swift */; };
+		C4796C0220E9A431006BBEAA /* DbConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4796C0120E9A431006BBEAA /* DbConstants.swift */; };
 		C4AD42D320D8310B003652AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AD42D220D8310B003652AE /* AppDelegate.swift */; };
 		C4AD42D520D8310B003652AE /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AD42D420D8310B003652AE /* ListViewController.swift */; };
 		C4AD42D820D8310B003652AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4AD42D620D8310B003652AE /* Main.storyboard */; };
@@ -79,6 +80,7 @@
 		C44B610820D834A6004EBFA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C44B610A20D83C2C004EBFA8 /* ListViewControllerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewControllerTableViewCell.swift; sourceTree = "<group>"; };
 		C44B610C20D84AD5004EBFA8 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		C4796C0120E9A431006BBEAA /* DbConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbConstants.swift; sourceTree = "<group>"; };
 		C4AD42CF20D8310B003652AE /* schwablication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = schwablication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4AD42D220D8310B003652AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4AD42D420D8310B003652AE /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			children = (
 				3AF02E5F20E5109A00A206A5 /* Alert.swift */,
 				C4FB3CDD20DE853B008E4E21 /* DateFormatter.swift */,
+				C4796C0120E9A431006BBEAA /* DbConstants.swift */,
 				C431AC2420E6DC69002C6E56 /* ImageHelper.swift */,
 				C40FD8A020E82A7C00CDF282 /* UIImage+Gif.swift */,
 			);
@@ -507,6 +510,7 @@
 				C4AD42D520D8310B003652AE /* ListViewController.swift in Sources */,
 				3AF02E6220E510CC00A206A5 /* HomeViewController.swift in Sources */,
 				C40FD89F20E7C9CA00CDF282 /* ExtendedListViewController.swift in Sources */,
+				C4796C0220E9A431006BBEAA /* DbConstants.swift in Sources */,
 				C4FB3CDC20DD38A5008E4E21 /* EntryManager.swift in Sources */,
 				C4AD42D320D8310B003652AE /* AppDelegate.swift in Sources */,
 				C41E70E420D833200033CC18 /* EntryModel.swift in Sources */,
@@ -552,7 +556,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 63DAK33447;
 				INFOPLIST_FILE = schwablicationTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS) $(PROJECT_DIR)/Carthage/Build/iOS";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+					"$(FRAMEWORK_SEARCH_PATHS)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablicationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -569,7 +579,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 63DAK33447;
 				INFOPLIST_FILE = schwablicationTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS) $(PROJECT_DIR)/Carthage/Build/iOS";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+					"$(FRAMEWORK_SEARCH_PATHS)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablicationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -585,7 +601,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 63DAK33447;
 				INFOPLIST_FILE = schwablicationUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablicationUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -601,7 +621,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 63DAK33447;
 				INFOPLIST_FILE = schwablicationUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablicationUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -732,7 +756,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 63DAK33447;
 				INFOPLIST_FILE = schwablication/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -748,7 +775,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 63DAK33447;
 				INFOPLIST_FILE = schwablication/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hdm.schwablication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

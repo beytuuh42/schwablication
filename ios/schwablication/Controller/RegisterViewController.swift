@@ -16,14 +16,16 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationController!.navigationBar.isHidden = false
         view.accessibilityIdentifier = "registerView"
-        
         
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
     }
     
+    
+    /// Performing a sign up to the firebase authentication system.
+    /// Checking if the input is wrong and popping an alert if so
+    /// otherwise creating the user and navigating to login view.
     func handleRegister(){
         guard let email = emailTextField.text else { return }
         guard let pass = passwordTextField.text else { return }
@@ -35,7 +37,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
                     print("User created")
                     let alertController = UIAlertController(title: "Success", message: "User created", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
-                        self.performSegue(withIdentifier: "toLoginScreen", sender: self)
+                        self.navigationController?.popViewController(animated: true)
                     }
                     alertController.addAction(okAction)
                     self.present(alertController, animated: true, completion:nil)
@@ -49,6 +51,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
         }
     }
     
+    /// Button event handler for "Create Account". Firing the sign up function.
     @IBAction func onButtonClickCreateAccount(_ sender: UIButton) {
         handleRegister()
     }

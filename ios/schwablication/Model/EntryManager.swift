@@ -34,13 +34,13 @@ class EntryManager{
     func addEntry(title:String, amount:Double, category:String){
         let id = self.refEntries.childByAutoId().key
         let entry = [
-            EntryModel.DbColumns.columnId:id as String,
-            EntryModel.DbColumns.columnAmount:amount as Double,
-            EntryModel.DbColumns.columnTitle:title as String,
-            EntryModel.DbColumns.columnCreatedAt:NSDate().timeIntervalSince1970 as Double,
-            EntryModel.DbColumns.columnCategory:category as String,
-            EntryModel.DbColumns.columnDescription:"" as String,
-            EntryModel.DbColumns.columnPhoto:"" as String
+            DbConstants.columnId:id as String,
+            DbConstants.columnAmount:amount as Double,
+            DbConstants.columnTitle:title as String,
+            DbConstants.columnCreatedAt:NSDate().timeIntervalSince1970 as Double,
+            DbConstants.columnCategory:category as String,
+            DbConstants.columnDescription:"" as String,
+            DbConstants.columnPhoto:"" as String
             ] as [String : Any]
         self.refEntries.child(id).setValue(entry)
     }
@@ -53,13 +53,13 @@ class EntryManager{
     ///   - category: title of the entry - String
     func addEntry(id:String, title:String, amount:Double, category:String) -> [String: Any]{
         let entry = [
-            EntryModel.DbColumns.columnId:id as String,
-            EntryModel.DbColumns.columnAmount:amount as Double,
-            EntryModel.DbColumns.columnTitle:title as String,
-            EntryModel.DbColumns.columnCreatedAt:NSDate().timeIntervalSince1970 as Double,
-            EntryModel.DbColumns.columnCategory:category as String,
-            EntryModel.DbColumns.columnDescription:"" as String,
-            EntryModel.DbColumns.columnPhoto:"" as String
+            DbConstants.columnId:id as String,
+            DbConstants.columnAmount:amount as Double,
+            DbConstants.columnTitle:title as String,
+            DbConstants.columnCreatedAt:NSDate().timeIntervalSince1970 as Double,
+            DbConstants.columnCategory:category as String,
+            DbConstants.columnDescription:"" as String,
+            DbConstants.columnPhoto:"" as String
             ] as [String : Any]
         return entry
     }
@@ -87,13 +87,13 @@ class EntryManager{
             while let entries = enumerator.nextObject() as? DataSnapshot{
                 let entryDic = entries.value as? NSDictionary
                 
-                guard let id = entryDic![EntryModel.DbColumns.columnId] else { return }
-                guard let title = entryDic![EntryModel.DbColumns.columnTitle] else { return }
-                guard let amount = entryDic![EntryModel.DbColumns.columnAmount] else { return }
-                guard let category = entryDic![EntryModel.DbColumns.columnCategory] else { return }
-                guard let createdAt = entryDic![EntryModel.DbColumns.columnCreatedAt] else { return }
-                guard let desc = entryDic![EntryModel.DbColumns.columnDescription] else { return }
-                guard let photo = entryDic![EntryModel.DbColumns.columnPhoto] else { return }
+                guard let id = entryDic![DbConstants.columnId] else { return }
+                guard let title = entryDic![DbConstants.columnTitle] else { return }
+                guard let amount = entryDic![DbConstants.columnAmount] else { return }
+                guard let category = entryDic![DbConstants.columnCategory] else { return }
+                guard let createdAt = entryDic![DbConstants.columnCreatedAt] else { return }
+                guard let desc = entryDic![DbConstants.columnDescription] else { return }
+                guard let photo = entryDic![DbConstants.columnPhoto] else { return }
                 
                 let entry = EntryModel(id: id as! String, title: title as! String,desc: desc as! String, amount: amount as! Double, createdAt: createdAt as! Double,photo: photo as! String, category: category as! String)
 
@@ -119,14 +119,14 @@ class EntryManager{
             if snapshot.childrenCount > 0 {
                 let snap = snapshot.value as? NSDictionary
 
-                let id = snap![EntryModel.DbColumns.columnId] as? String ?? ""
-                let title = snap![EntryModel.DbColumns.columnTitle] as? String ?? ""
-                let amount = snap![EntryModel.DbColumns.columnAmount] as? Double ?? 0
-                let category = snap![EntryModel.DbColumns.columnCategory] as? String ?? ""
-                let createdAt = snap![EntryModel.DbColumns.columnCreatedAt] as? Double ?? 0
+                let id = snap![DbConstants.columnId] as? String ?? ""
+                let title = snap![DbConstants.columnTitle] as? String ?? ""
+                let amount = snap![DbConstants.columnAmount] as? Double ?? 0
+                let category = snap![DbConstants.columnCategory] as? String ?? ""
+                let createdAt = snap![DbConstants.columnCreatedAt] as? Double ?? 0
 
-                let desc = snap![EntryModel.DbColumns.columnDescription] as? String ?? ""
-                let photo = snap![EntryModel.DbColumns.columnPhoto] as? String ?? ""
+                let desc = snap![DbConstants.columnDescription] as? String ?? ""
+                let photo = snap![DbConstants.columnPhoto] as? String ?? ""
                 
                 let entry = EntryModel(id: id, title: title, desc: desc, amount: amount, createdAt: createdAt, photo: photo, category: category)
                 completion(entry)
@@ -166,7 +166,7 @@ class EntryManager{
             let enumerator = snapshot.children
             while let entries = enumerator.nextObject() as? DataSnapshot{
                 let entryDic = entries.value as? NSDictionary
-                let amount = entryDic![EntryModel.DbColumns.columnAmount] as! Double
+                let amount = entryDic![DbConstants.columnAmount] as! Double
                 
                 self.totalSum += amount
             }
@@ -197,8 +197,8 @@ class EntryManager{
             let enumerator = snapshot.children
             while let entries = enumerator.nextObject() as? DataSnapshot{
                 let entryDic = entries.value as? NSDictionary
-                let amount = entryDic![EntryModel.DbColumns.columnAmount] as! Double
-                let category = entryDic![EntryModel.DbColumns.columnCategory] as! String
+                let amount = entryDic![DbConstants.columnAmount] as! Double
+                let category = entryDic![DbConstants.columnCategory] as! String
                 
                 if(category == Category.Ausgaben.description){
                     self.outSum += amount
@@ -217,13 +217,13 @@ class EntryManager{
     func updateEntryById(entry:EntryModel){
         let entryRef = refEntries.child("\(entry.id)")
         let entryVal = [
-            EntryModel.DbColumns.columnId:entry.id,
-            EntryModel.DbColumns.columnAmount:entry.amount,
-            EntryModel.DbColumns.columnTitle:entry.title,
-            EntryModel.DbColumns.columnCreatedAt:entry.createdAt,
-            EntryModel.DbColumns.columnCategory:entry.category,
-            EntryModel.DbColumns.columnDescription:entry.desc,
-            EntryModel.DbColumns.columnPhoto:entry.photo
+            DbConstants.columnId:entry.id,
+            DbConstants.columnAmount:entry.amount,
+            DbConstants.columnTitle:entry.title,
+            DbConstants.columnCreatedAt:entry.createdAt,
+            DbConstants.columnCategory:entry.category,
+            DbConstants.columnDescription:entry.desc,
+            DbConstants.columnPhoto:entry.photo
             ] as [String : Any]
         entryRef.updateChildValues(entryVal)
     }

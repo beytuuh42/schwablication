@@ -25,7 +25,8 @@ class ExtendedListViewController: UIViewController, UITextFieldDelegate {
     var picker = UIImagePickerController()
     var didChange = false
 
-    
+    /// Downloading the image for the entry and replacing it with the
+    /// loading.gif imageview when finished.
     override func viewDidLoad() {
         view.accessibilityIdentifier = "extendedView"
         photoHandler(iv: photoImaveView)
@@ -43,6 +44,7 @@ class ExtendedListViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    /// Loading entry data into the fields.
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.navigationItem.setHidesBackButton(false, animated:true)
         amountTextField.text = String(format: "%.02f", (entry?.amount)!)
@@ -51,6 +53,8 @@ class ExtendedListViewController: UIViewController, UITextFieldDelegate {
         dateTextField.text = DateFormatter(ti: (entry?.createdAt)!).getFormattedDate()
     }
     
+    
+    /// Button event handler for "Save". Updating the entry to firebase.
     @IBAction func saveOnClick(_ sender: Any) {
         guard let title = titleTextField.text else { return }
         guard let desc = descriptionTextField.text else { return }
@@ -59,28 +63,47 @@ class ExtendedListViewController: UIViewController, UITextFieldDelegate {
         updateEntryAndPopView(title: title, desc: desc, amount: amount)
     }
 
+    
+    /// Adding tap gesture to the incoming imageview
+    ///
+    /// - Parameter iv: imageview to add the gesture
     func photoHandler(iv:UIImageView){
         iv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectImageView)))
         iv.isUserInteractionEnabled = true
     }
     
+    
+    
+    /// Handling the update of an entry.
+    /// Checking if there is a new image and uploading if so.
+    /// Otherwise simply updating the data and finally popping the view.
+    ///
+    /// - Parameters:
+    ///   - title: new title of entry
+    ///   - desc: new desc of entry
+    ///   - amount: new amount of entry
     func updateEntryAndPopView(title:String,desc:String,amount:Double){
         if(!didChange){
             let newEntry = EntryModel(id: (entry?.id)!, title: title, desc: desc, amount: amount, createdAt: (entry?.createdAt)!, photo: (entry?.photo)!, category: (entry?.category)!)
             entryManager?.updateEntryById(entry: newEntry)
-            //self.performSegue(withIdentifier: "toListScreen", sender: self)
-            //self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
             navigationController?.popViewController(animated: true)
         } else {
+            var image = UIImage.gif(asset: "loading")
+            var imageView = UIImageView(image: image!)
+            imageView.alpha = 0.5
+            let x = self.view.frame.size.width/4
+            let y = self.view.frame.size.height/3
+            imageView.frame = CGRect(x: x, y: y, width: 200, height: 200)
+            self.view.addSubview(imageView)
+            
             let imgHelper = ImageHelper()
             let imgView = UIImageView()
             imgView.image = UIImage.gif(asset: "loading")
             imgView.contentMode = .scaleAspectFit
-            imgHelper.uploadImageToStorage(imgHelper.resizeImage(image: photoImaveView.image!, targetSize: CGSize(width:200.0, height:200.0)), completionBlock: { (fileUrl, errorMessage) in
+            imgHelper.uploadImageToStorage(imgHelper.resizeImage(image: photoImaveView.image!, targetSize: CGSize(width:300.0, height:300.0)), completionBlock: { (fileUrl, errorMessage) in
                 let newEntry = EntryModel(id: (self.entry?.id)!, title: title, desc: desc, amount: amount, createdAt: (self.entry?.createdAt)!, photo: (fileUrl?.absoluteString)!, category: (self.entry?.category)!)
                 self.entryManager?.updateEntryById(entry: newEntry)
-                //self.performSegue(withIdentifier: "toListScreen", sender: self)
-                //self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                image = nil
                 self.navigationController?.popViewController(animated: true)
             })
         }
@@ -89,6 +112,8 @@ class ExtendedListViewController: UIViewController, UITextFieldDelegate {
 
 extension ExtendedListViewController: UIImagePickerControllerDelegate{
     
+    /// Asking permission to use camera and opening it or
+    /// popping an alert message to change the settings.
     func openCamera(){
         AVCaptureDevice.requestAccess(for: AVMediaType.video) { response in
             if response {
@@ -103,12 +128,14 @@ extension ExtendedListViewController: UIImagePickerControllerDelegate{
         }
     }
     
+    /// Opening the gallery of the phone.
     func openGallary(){
         picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
         picker.allowsEditing = true
         self.present(picker, animated: true, completion: nil)
     }
     
+    /// Actually opening the camera of the phone.
     func useCamera(){
         if(UIImagePickerController .isSourceTypeAvailable(.camera)){
             picker.sourceType = .camera
@@ -122,6 +149,7 @@ extension ExtendedListViewController: UIImagePickerControllerDelegate{
         }
     }
     
+    /// Setting the image of the entry to the chosen one from the camera or gallery.
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage{
             photoImaveView.image = image
@@ -130,6 +158,7 @@ extension ExtendedListViewController: UIImagePickerControllerDelegate{
         self.dismiss(animated: true, completion: nil)
     }
     
+    /// Dismissing the image picker when pressing cancel.
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -137,6 +166,8 @@ extension ExtendedListViewController: UIImagePickerControllerDelegate{
 }
 
 extension ExtendedListViewController: UINavigationControllerDelegate{
+    
+    /// Popping a menu to choose between "Camera", "Gallery" and "Cancel"
     @objc func handleSelectImageView(){
         picker.delegate = self
         
@@ -153,6 +184,7 @@ extension ExtendedListViewController: UINavigationControllerDelegate{
         
         self.present(alert, animated: true, completion: nil)
     }
+    
     func keyboardHandler(){
         NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         

@@ -49,8 +49,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     /// Loading data before view is appearing
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        tabBarController?.navigationItem.setHidesBackButton(true, animated:true)
-//        navigationController?.visibleViewController?.title = "Home"
         loadData()
     }
     

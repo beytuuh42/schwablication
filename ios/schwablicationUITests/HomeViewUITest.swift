@@ -17,6 +17,8 @@ class HomeViewUITest: XCTestCase {
     var registerButton: XCUIElement!
     let email = "test@test.de"
     let pass = "testtest"
+    var amountTextField: XCUIElement!
+    var titleTextField: XCUIElement!
     
     override func setUp() {
         super.setUp()
@@ -30,6 +32,8 @@ class HomeViewUITest: XCTestCase {
         app = XCUIApplication()
         app.launch()
         performLogin()
+        amountTextField = app.textFields["amountTextField"]
+        titleTextField = app.textFields["titleTextField"]
     }
     
     override func tearDown() {
@@ -37,7 +41,6 @@ class HomeViewUITest: XCTestCase {
         super.tearDown()
     }
     func performLogin() {
-        
         emailTextField = app.textFields["emailTextField"]
         passwordTextField = app.secureTextFields["passwordTextField"]
         loginButton = app.buttons["loginButton"]
@@ -48,23 +51,53 @@ class HomeViewUITest: XCTestCase {
         passwordTextField.typeText(pass)
         loginButton.tap()
         app.alerts["Success"].buttons["OK"].tap()
-        
-        
     }
     
-    func testAddButton(){
-        
-        app/*@START_MENU_TOKEN@*/.buttons["+"]/*[[".otherElements[\"homeView\"].buttons[\"+\"]",".buttons[\"+\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.alerts["Incomplete Form"].buttons["OK"].tap()
-        
-    }
-    
-    func testMinusButton(){
-        
-        app/*@START_MENU_TOKEN@*/.buttons["-"]/*[[".otherElements[\"homeView\"].buttons[\"-\"]",".buttons[\"-\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+    func testPerformAddEntryNoInputPlusButton(){
+        app.buttons["+"].tap()
         let okButton = app.alerts["Incomplete Form"].buttons["OK"]
-        okButton.tap()
         XCTAssertTrue(okButton.exists)
-        
+    }
+    
+    func testPerformAddEntryNoInputMinusButton(){
+        app.buttons["-"].tap()
+        let okButton = app.alerts["Incomplete Form"].buttons["OK"]
+        XCTAssertTrue(okButton.exists)
+    }
+    
+    func testPerformAddEntrySemiInputPlusButton(){
+        amountTextField.tap()
+        amountTextField.typeText("65.50")
+        app.buttons["+"].tap()
+        let okButton = app.alerts["Incomplete Form"].buttons["OK"]
+        XCTAssertTrue(okButton.exists)
+    }
+    
+    func testPerformAddEntrySemiInputMinusButton(){
+        amountTextField.tap()
+        amountTextField.typeText("65.50")
+        app.buttons["-"].tap()
+        let okButton = app.alerts["Incomplete Form"].buttons["OK"]
+        XCTAssertTrue(okButton.exists)
+    }
+    
+    func testPerformAddEntryWithInputMinusButton(){
+        amountTextField.tap()
+        amountTextField.typeText("65.50")
+        titleTextField.tap()
+        titleTextField.typeText("Shopping")
+        app.buttons["-"].tap()
+        let okButton = app.alerts["Incomplete Form"].buttons["OK"]
+        XCTAssertFalse(okButton.exists)
+    }
+    
+    func testPerformAddEntryWithInputPlusButton(){
+        amountTextField.tap()
+        amountTextField.typeText("165.50")
+        titleTextField.tap()
+        titleTextField.typeText("Lohn")
+        app.buttons["+"].tap()
+        let okButton = app.alerts["Incomplete Form"].buttons["OK"]
+        XCTAssertFalse(okButton.exists)
     }
 }

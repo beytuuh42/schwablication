@@ -19,6 +19,9 @@ class ExtendedListViewUITest: XCTestCase {
     let descriptions = "Testing"
     let email = "test@test.de"
     let pass = "testtest"
+    var amountTextField: XCUIElement!
+    var titleTextField: XCUIElement!
+    
     
     override func setUp() {
         super.setUp()
@@ -34,15 +37,17 @@ class ExtendedListViewUITest: XCTestCase {
     }
     
     func testScreenExists() {
+        navigateToExtended()
         XCTAssertTrue(app.otherElements["extendedView"].exists)
     }
     func testSaveButton() {
+        navigateToExtended()
         app.buttons["saveButton"].tap()
-        XCTAssertTrue(app.otherElements["loginView"].exists)
+        XCTAssertTrue(app.otherElements["listView"].exists)
     }
     
     func testDescriptionField() {
-        
+        navigateToExtended()
         descriptionTextField = app.textFields["descriptionTextField"]
         descriptionTextField.tap()
         descriptionTextField.typeText(descriptions)
@@ -51,9 +56,6 @@ class ExtendedListViewUITest: XCTestCase {
         app.menuItems["Cut"].tap()
         descriptionTextField.typeText(descriptions)
         app.buttons["saveButton"].tap()
-        loginButton.tap()  //ab hier wird löschen wenn save zu listview zurück geht
-        app.alerts["Success"].buttons["OK"].tap()
-        app.tabBars.buttons["List"].tap() //bis hier hin
         let tablesQuery = app.tables.cells
         tablesQuery.element(boundBy: 0).tap()
         XCTAssertEqual(descriptionTextField.value as! String, descriptions)
@@ -70,6 +72,22 @@ class ExtendedListViewUITest: XCTestCase {
         passwordTextField.typeText(pass)
         loginButton.tap()
         app.alerts["Success"].buttons["OK"].tap()
+        performAddEntry()
+    }
+    
+    func performAddEntry(){
+        amountTextField = app.textFields["amountTextField"]
+        titleTextField = app.textFields["titleTextField"]
+        amountTextField.tap()
+        amountTextField.typeText("165.50")
+        titleTextField.tap()
+        titleTextField.typeText("Lohn")
+        app.buttons["+"].tap()
+        let okButton = app.alerts["Incomplete Form"].buttons["OK"]
+        XCTAssertFalse(okButton.exists)
+    }
+    
+    func navigateToExtended(){
         app.tabBars.buttons["List"].tap()
         let tablesQuery = app.tables.cells
         tablesQuery.element(boundBy: 0).tap()

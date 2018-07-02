@@ -24,11 +24,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-//        navigationItem.setHidesBackButton(true, animated:true)
-//        navigationController?.visibleViewController?.title = "Login"
-    }
     
+    /// Performing a sign in to the firebase authentication system.
+    /// Checking if the input is wrong and popping an alert if so
+    /// otherwise creating the user and navigating to home view.
     func handleLogin(){
         guard let email = emailTextField.text else { return }
         guard let pass = passwordTextField.text else { return }
@@ -60,10 +59,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    /// Button event handler for "Login". Firing the sign in function.
     @IBAction func onButtonClickLogin(_ sender: Any) {
         handleLogin()
     }
     
+    /// Setting the 'MainTabBarController' as the new rootview (on success login)
     func loadNavBar(){
         let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let nav = mainStoryboardIpad.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
