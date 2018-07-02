@@ -13,6 +13,7 @@ import AVFoundation
 class ExtendedListViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var descTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var titleTextField: UITextField!
@@ -41,7 +42,6 @@ class ExtendedListViewController: UIViewController, UITextFieldDelegate {
         self.descriptionTextField.delegate = self
         self.titleTextField.delegate = self
         self.dateTextField.delegate = self
-        
     }
     
     /// Loading entry data into the fields.
@@ -51,6 +51,9 @@ class ExtendedListViewController: UIViewController, UITextFieldDelegate {
         titleTextField.text = entry?.title
         descriptionTextField.text = entry?.desc
         dateTextField.text = DateFormatter(ti: (entry?.createdAt)!).getFormattedDate()
+        descTextField.textAlignment = .left
+        descTextField.contentVerticalAlignment = .top
+        descTextField.borderStyle = .roundedRect
     }
     
     
@@ -89,7 +92,7 @@ class ExtendedListViewController: UIViewController, UITextFieldDelegate {
             navigationController?.popViewController(animated: true)
         } else {
             var image = UIImage.gif(asset: "loading")
-            var imageView = UIImageView(image: image!)
+            let imageView = UIImageView(image: image!)
             imageView.alpha = 0.5
             let x = self.view.frame.size.width/4
             let y = self.view.frame.size.height/3
